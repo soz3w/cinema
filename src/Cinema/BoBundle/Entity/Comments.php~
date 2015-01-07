@@ -1,0 +1,73 @@
+<?php
+
+namespace Cinema\BoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Comments
+ *
+ * @ORM\Table(name="comments", indexes={@ORM\Index(name="user_id", columns={"user_id"}), @ORM\Index(name="movies_id", columns={"movies_id"}), @ORM\Index(name="date_created", columns={"date_created"})})
+ * @ORM\Entity
+ */
+class Comments
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="note", type="integer", nullable=true)
+     */
+    private $note;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="content", type="text", nullable=true)
+     */
+    private $content;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="state", type="integer", nullable=true)
+     */
+    private $state;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_created", type="datetime", nullable=true)
+     */
+    private $dateCreated;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+    /**
+     * @var \Movies
+     *
+     * @ORM\ManyToOne(targetEntity="Movies")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="movies_id", referencedColumnName="id")
+     * })
+     */
+    private $movies;
+
+
+}

@@ -1,0 +1,21 @@
+{% extends "CinemaBoBundle::layout.html.twig" %}
+{% block content %}
+<div class="jumbotron">
+    <div class="container">
+        <h1>A propos</h1>
+        {% for movie in movies %}
+            <div class="flash-notice">
+                {{ movie.title }}
+                <p>
+                    <a class="btn btn-default" href="{{ path('cinema_bo_movie_delete',
+                    {'id':movie.id})}}">Supprimer
+                    </a>
+                </p>
+
+            </div>
+
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+

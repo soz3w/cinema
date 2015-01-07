@@ -1,0 +1,56 @@
+{% extends "::base.html.twig" %}
+ {% block stylesheets %}
+     {{ parent() }}
+ {% endblock %}
+
+{% block body %}
+    {% block menu %}
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li> <a class ="accueil" href="#/products">Accueil</a> </li>
+                    <li> <a class ="login" href="#/login">Mentions Legales</a> </li>
+                    <li> <a class ="register" href="#/register" >CGU</a> </li>
+                    <li> <a class ="contact" href="#/essai">Contact</a> </li>
+                    <li class="dropdown"> <a data-toggle="dropdown" class ="others" href="#" onclick="return false;">
+                            Others...<b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#/formvalid">Functionality 1</a></li>
+                            <li><a href="#">Functionality 2</a></li>
+                            <li><a href="#">Functionality 3</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">...</a></li>
+                        </ul></a>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-right inline-form">
+                    <div class="form-group">
+                        <input type="search" class="input-xs form-control" ng-model="query">
+                        <button class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-eye-open"></span> Rechercher</button>
+                    </div>
+                </form>
+            </div>
+        </nav>
+    {% endblock %}
+    {% block sidebar %}
+        <div class="col-sm-3">
+            {{ include("CinemaBoBundle:slots:sidebar.html.twig") }}
+
+        </div>
+    {% endblock %}
+    {% block content %}
+        <div class="col-sm-9">
+
+        </div>
+    {% endblock %}
+
+        {%  use("CinemaBoBundle:slots:footer.html.twig") %}
+        {% block footer %}
+            {{ parent() }}
+        {% endblock %}
+    {% block javascripts %}
+        {{ parent() }}
+    {% endblock %}
+
+{% endblock %}

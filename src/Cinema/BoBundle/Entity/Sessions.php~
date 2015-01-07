@@ -1,0 +1,52 @@
+<?php
+
+namespace Cinema\BoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Sessions
+ *
+ * @ORM\Table(name="sessions", indexes={@ORM\Index(name="movies_id", columns={"movies_id"}), @ORM\Index(name="cinema_id", columns={"cinema_id"})})
+ * @ORM\Entity
+ */
+class Sessions
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_session", type="datetime", nullable=true)
+     */
+    private $dateSession;
+
+    /**
+     * @var \Movies
+     *
+     * @ORM\ManyToOne(targetEntity="Movies")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="movies_id", referencedColumnName="id")
+     * })
+     */
+    private $movies;
+
+    /**
+     * @var \Cinema
+     *
+     * @ORM\ManyToOne(targetEntity="Cinema")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cinema_id", referencedColumnName="id")
+     * })
+     */
+    private $cinema;
+
+
+}

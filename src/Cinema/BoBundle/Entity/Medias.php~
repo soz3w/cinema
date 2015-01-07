@@ -1,0 +1,56 @@
+<?php
+
+namespace Cinema\BoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Medias
+ *
+ * @ORM\Table(name="medias", indexes={@ORM\Index(name="movies_id", columns={"movies_id"})})
+ * @ORM\Entity
+ */
+class Medias
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nature", type="integer", nullable=true)
+     */
+    private $nature;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="picture", type="text", nullable=true)
+     */
+    private $picture;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="video", type="text", nullable=true)
+     */
+    private $video;
+
+    /**
+     * @var \Movies
+     *
+     * @ORM\ManyToOne(targetEntity="Movies")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="movies_id", referencedColumnName="id")
+     * })
+     */
+    private $movies;
+
+
+}

@@ -1,0 +1,75 @@
+<?php
+
+namespace Cinema\BoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Cinema
+ *
+ * @ORM\Table(name="cinema")
+ * @ORM\Entity
+ */
+class Cinema
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=250, nullable=true)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ville", type="string", length=250, nullable=true)
+     */
+    private $ville;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="position", type="integer", nullable=false)
+     */
+    private $position = '0';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_created", type="datetime", nullable=true)
+     */
+    private $dateCreated;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Movies", inversedBy="cinemas")
+     * @ORM\JoinTable(name="cinema_movies",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="cinemas_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="movies_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $movies;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->movies = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

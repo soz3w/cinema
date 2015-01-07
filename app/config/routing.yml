@@ -1,0 +1,7 @@
+cinema_bo:
+    resource: "@CinemaBoBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation

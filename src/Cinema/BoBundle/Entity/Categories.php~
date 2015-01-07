@@ -1,0 +1,102 @@
+<?php
+
+namespace Cinema\BoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Categories
+ *
+ * @ORM\Table(name="categories")
+ * @ORM\Entity
+ */
+class Categories
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=250, nullable=true)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=300, nullable=true)
+     */
+    private $slug;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="parent_id", type="integer", nullable=true)
+     */
+    private $parentId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="position", type="integer", nullable=true)
+     */
+    private $position;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="lft", type="integer", nullable=true)
+     */
+    private $lft;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="lvl", type="integer", nullable=true)
+     */
+    private $lvl;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="rgt", type="integer", nullable=true)
+     */
+    private $rgt;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="root", type="integer", nullable=true)
+     */
+    private $root;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_created", type="datetime", nullable=true)
+     */
+    private $dateCreated;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_updated", type="datetime", nullable=true)
+     */
+    private $dateUpdated;
+
+
+}
