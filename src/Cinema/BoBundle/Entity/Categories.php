@@ -98,6 +98,11 @@ class Categories
      */
     private $dateUpdated;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Movies", mappedBy="categories")
+     */
+    private $movies;
+
 
 
     /**
@@ -361,5 +366,45 @@ class Categories
     public function getDateUpdated()
     {
         return $this->dateUpdated;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->movies = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add movies
+     *
+     * @param \Cinema\BoBundle\Entity\Movies $movies
+     * @return Categories
+     */
+    public function addMovie(\Cinema\BoBundle\Entity\Movies $movies)
+    {
+        $this->movies[] = $movies;
+
+        return $this;
+    }
+
+    /**
+     * Remove movies
+     *
+     * @param \Cinema\BoBundle\Entity\Movies $movies
+     */
+    public function removeMovie(\Cinema\BoBundle\Entity\Movies $movies)
+    {
+        $this->movies->removeElement($movies);
+    }
+
+    /**
+     * Get movies
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMovies()
+    {
+        return $this->movies;
     }
 }

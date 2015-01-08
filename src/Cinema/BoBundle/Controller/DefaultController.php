@@ -29,7 +29,7 @@ class DefaultController extends Controller
         //finding for a movie
         //$movie2= $repoMovies->find(2);
         //$movie2= $repoMovies->findByTitle("night call");
-        //$em->remove($movie2)
+        //$em->remove($movie2);
         //$em->flush();
         //$movies= $repoMovies->findAll();
         //exit(Debug::dump($movie2));

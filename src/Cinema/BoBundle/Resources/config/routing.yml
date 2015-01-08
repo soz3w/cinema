@@ -22,6 +22,24 @@ cinema_bo_Apropos:
 cinema_bo_test:
     path:     /test
     defaults: { _controller: CinemaBoBundle:Static:test }
-cinema_bo_movie_delete:
-    path:     /deleteMovie/{id}
-    defaults: { _controller: CinemaBoBundle:Static:deleteMovie }
+cinema_bo_movies:
+    path:     /movies
+    defaults: { _controller: CinemaBoBundle:Movies:listMovies }
+cinema_bo_movie:
+    path:     /movie/{id}
+    defaults: { _controller: CinemaBoBundle:Movies:getMovie }
+    requirements:
+            id: \d+
+cinema_bo_movie_remove:
+    path:     /movie/remove/{id}
+    defaults: { _controller: CinemaBoBundle:Movies:removeMovie }
+    requirements:
+            id: \d+
+cinema_bo_movies_category:
+    path:     /movies/category/{catId}
+    defaults: { _controller: CinemaBoBundle:Movies:listMoviesByCategory }
+    requirements:
+            catId: \d+
+cinema_bo_categories:
+    path:     /categories
+    defaults: { _controller: CinemaBoBundle:Categories:getCategories }

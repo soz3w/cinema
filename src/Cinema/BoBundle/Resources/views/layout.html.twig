@@ -4,6 +4,7 @@
  {% endblock %}
 
 {% block body %}
+    <div class="container">
     {% block menu %}
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
@@ -26,7 +27,7 @@
                 </ul>
                 <form class="navbar-form navbar-right inline-form">
                     <div class="form-group">
-                        <input type="search" class="input-xs form-control" ng-model="query">
+                        <input type="search" class="input-xs form-control" >
                         <button class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-eye-open"></span> Rechercher</button>
                     </div>
                 </form>
@@ -52,5 +53,5 @@
     {% block javascripts %}
         {{ parent() }}
     {% endblock %}
-
+    </div>
 {% endblock %}
