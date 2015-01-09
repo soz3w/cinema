@@ -2,9 +2,8 @@
 
 namespace Cinema\BoBundle\Controller;
 
-use Cinema\BoBundle\Entity\Movies;
+
 use Cinema\BoBundle\Entity\Categories;
-use Cinema\BoBundle\Entity\Tags;
 use Doctrine\Common\Util\Debug;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -25,7 +24,7 @@ class CategoriesController extends Controller
         //getting the repository for movies
         $repoCategories=$em->getRepository("CinemaBoBundle:Categories");
 
-        $listCategories =  $repoCategories->findAll();
+        $listCategories =  $repoCategories->getCategories();
 
         return $this->render('CinemaBoBundle:Categories:categories.html.twig',array("categories"=>$listCategories));
     }

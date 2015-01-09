@@ -1,0 +1,16 @@
+{% block sidebar %}
+
+        {% for movie in bestMovies %}
+
+                <li>
+
+                            <a  href="{{ path('cinema_bo_movie',{'id':movie.id})}}">
+                                {{ movie.title }}
+                            </a>
+
+                </li>
+
+        {% endfor %}
+
+
+{% endblock %}

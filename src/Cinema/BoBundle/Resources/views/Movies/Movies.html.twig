@@ -1,15 +1,26 @@
 {% extends "CinemaBoBundle::layout.html.twig" %}
 {% block content %}
-<div class="col-sm-9">
+<div class="col-sm-8">
         {% for movie in movies %}
 
                 <div class="allMovies col-sm-6 panel panel-warning">
                     <div class='panel-body'>
-                        <p class="text-right"><a href="{{ path('cinema_bo_movie_remove',{'id':movie.id})}}" title="Delete the movie"><span class="glyphicon glyphicon-remove"></span></a></p>
+                        <p class="text-right">
+                            <a href="{{ path('cinema_bo_movie_remove',{'id':movie.id})}}" title="Delete the movie">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </a>
+                        </p>
                         <p>
                             <a class="btn btn-xs btn-success" href="{{ path('cinema_bo_movies_category',
                             {'catId':movie.categories.id})}}">{{ movie.categories.title }}
                             </a>
+                        </p>
+                        <p>
+                             {% for tag in movie.tags %}
+                                <a class="btn btn-xs btn-warning" href="{{ path('cinema_bo_movies_tag',
+                                {'tagId':tag.id})}}">{{ tag.word }}
+                                </a>
+                             {% endfor %}
                         </p>
                         <p>
                             <a  href="{{ path('cinema_bo_movie',{'id':movie.id})}}">
@@ -20,7 +31,7 @@
                             <img class="img-thumbnail" src="{{ movie.image }}">
                         </p>
                         <p class='text-justify'>
-                              {{movie.synopsis|striptags|truncate(200, true)}}
+                              {{movie.synopsis|striptags|truncate(120, true)}}
                         </p>
 
                     </div>

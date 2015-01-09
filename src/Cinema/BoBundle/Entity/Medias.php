@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Medias
  *
  * @ORM\Table(name="medias", indexes={@ORM\Index(name="movies_id", columns={"movies_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Cinema\BoBundle\Repository\MediasRepository")
  */
 class Medias
 {

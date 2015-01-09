@@ -1,5 +1,6 @@
 {% extends "CinemaBoBundle::layout.html.twig" %}
 {% block content %}
+<div class="col-sm-8">
 
                 <div class="oneMovie panel panel-warning">
                     <div class='panel-body'>
@@ -11,8 +12,8 @@
                         <p>
                             <img class="img-thumbnail" src="{{ movie.image }}">
                         </p>
-                        <p class='text-right'><a id ="{{movie.id}}" href="#"
-                                                 class="text-right">{{movie.synopsis|raw}}</a>
+                        <p class='text-justify'>
+                            {{movie.synopsis|raw}}
                         </p>
                         <p>
                             <a class="btn btn-sm btn-success" href="{{ path('cinema_bo_movies_category',
@@ -22,5 +23,5 @@
                     </div>
 
                 </div>
-
+</div>
 {% endblock %}

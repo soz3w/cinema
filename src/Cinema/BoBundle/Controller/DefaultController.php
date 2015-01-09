@@ -6,13 +6,14 @@ use Cinema\BoBundle\Entity\Movies;
 use Cinema\BoBundle\Entity\Categories;
 use Cinema\BoBundle\Entity\Tags;
 use Doctrine\Common\Util\Debug;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    public function indexAction($name)
+    public function indexAction()
     {
-        return $this->render('CinemaBoBundle:Default:index.html.twig', array('name' => $name));
+        return new RedirectResponse($this->generateUrl("cinema_bo_movies"));
     }
     public function contactAction()
     {

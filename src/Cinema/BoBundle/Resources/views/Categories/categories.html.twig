@@ -1,4 +1,8 @@
-{% for categorie in categories %}
-    <li class="list-group-item"><a href="{{ path('cinema_bo_movies_category',
-        {'catId':categorie.id})}}">{{categorie.title}}</a></li>
+{% for category in categories %}
+    {% if category.movies|length >0 %}
+        <li><a  href="{{ path('cinema_bo_movies_category',
+            {'catId':category.id})}}">{{category.title}}</a>
+            <span class="pull-right badge">{{ category.movies|length }}</span>
+        </li>
+    {% endif %}
 {% endfor %}

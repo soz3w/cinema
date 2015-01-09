@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Categories
  *
  * @ORM\Table(name="categories")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Cinema\BoBundle\Repository\CategoriesRepository")
  */
 class Categories
 {

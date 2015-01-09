@@ -1,0 +1,6 @@
+Accueil|Films|Categories|Acteurs|Realisateurs|Seances|Cinema
+
+getResult
+getSingleScalarResult
+getOneorNullResult
+getOneResult

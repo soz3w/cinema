@@ -1,0 +1,8 @@
+{% for tag in tags %}
+    {% if tag.movies|length >0 %}
+        <li><a href="{{ path('cinema_bo_movies_tag',
+            {'tagId':tag.id})}}">{{tag.word}}</a>
+            <span class="pull-right badge">{{ tag.movies|length }}</span>
+        </li>
+    {% endif %}
+{% endfor %}

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Comments
  *
  * @ORM\Table(name="comments", indexes={@ORM\Index(name="user_id", columns={"user_id"}), @ORM\Index(name="movies_id", columns={"movies_id"}), @ORM\Index(name="date_created", columns={"date_created"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Cinema\BoBundle\Repository\CommentsRepository")
  */
 class Comments
 {
