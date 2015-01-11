@@ -25,7 +25,7 @@ class TagsController extends Controller
         //getting the repository for movies
         $repoTags=$em->getRepository("CinemaBoBundle:Tags");
 
-        $listTags =  $repoTags->getTags();
+        $listTags =  $repoTags->getTags(6);
 
         return $this->render('CinemaBoBundle:Tags:tags.html.twig',array("tags"=>$listTags));
     }

@@ -220,7 +220,7 @@ class Movies
     /**
      * @var \Categories
      *
-     * @ORM\ManyToOne(targetEntity="Categories")
+     * @ORM\ManyToOne(targetEntity="Categories",inversedBy="movies")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="categories_id", referencedColumnName="id")
      * })
@@ -251,7 +251,7 @@ class Movies
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Movies", inversedBy="movies")
+     * @ORM\ManyToMany(targetEntity="Movies")
      * @ORM\JoinTable(name="related_movies",
      *   joinColumns={
      *     @ORM\JoinColumn(name="movies_id", referencedColumnName="id")
@@ -286,6 +286,14 @@ class Movies
     private $user;
 
     /**
+     *  @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="Comments", mappedBy="movies")
+     * })
+     */
+    private $comments;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -296,6 +304,7 @@ class Movies
         $this->moviesRelated = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
         $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -1008,6 +1017,41 @@ class Movies
     {
         return $this->actors;
     }
+
+
+    /**
+     * Add comments
+     *
+     * @param \Cinema\BoBundle\Entity\Comments $comments
+     * @return Movies
+     */
+    public function addComment(\Cinema\BoBundle\Entity\Comments $comments)
+    {
+        $this->comments[] = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Remove Comments
+     *
+     * @param \Cinema\BoBundle\Entity\Comments $actors
+     */
+    public function removeComment(\Cinema\BoBundle\Entity\Comments $comments)
+    {
+        $this->actors->removeElement($comments);
+    }
+
+    /**
+     * Get actors
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
 
     /**
      * Add cinemas

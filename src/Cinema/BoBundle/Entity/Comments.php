@@ -62,7 +62,7 @@ class Comments
     /**
      * @var \Movies
      *
-     * @ORM\ManyToOne(targetEntity="Movies")
+     * @ORM\ManyToOne(targetEntity="Movies", inversedBy="comments")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="movies_id", referencedColumnName="id")
      * })

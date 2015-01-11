@@ -24,7 +24,7 @@ class CategoriesController extends Controller
         //getting the repository for movies
         $repoCategories=$em->getRepository("CinemaBoBundle:Categories");
 
-        $listCategories =  $repoCategories->getCategories();
+        $listCategories =  $repoCategories->getCategories(6);
 
         return $this->render('CinemaBoBundle:Categories:categories.html.twig',array("categories"=>$listCategories));
     }

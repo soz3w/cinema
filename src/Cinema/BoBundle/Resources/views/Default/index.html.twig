@@ -1,9 +1,9 @@
 {% extends "CinemaBoBundle::layout.html.twig" %}
 {% block content %}
-    <div class="col-sm-8">
+    <div class="col-sm-4">
         {% for movie in movies %}
 
-            <div class="allMovies col-sm-6 panel panel-warning">
+            <div class="allMovies panel panel-warning">
                 <div class='panel-body'>
                     <p class="text-right">
                         <a href="{{ path('cinema_bo_movie_remove',{'id':movie.id})}}" title="Delete the movie">
@@ -40,5 +40,6 @@
 
         {% endfor %}
     </div>
+
 
 {% endblock %}

@@ -1,0 +1,21 @@
+ {% for actor in actors %}
+
+                <div class="allMovies panel panel-warning">
+                        <div class='panel-body'>
+
+                                <div>
+                                        <a  href="{{ path('cinema_bo_actor',{'id':actor.id})}}">
+                                                {{  actor.firstname ~" " ~actor.lastname }}
+                                        </a>
+                                        <span>nb films</span><span class="badge">{{ actor.nbMovies }}</span>
+                                </div>
+                                <p>
+                                        <img class="img-thumbnail" src="{{ actor.image }}">
+                                </p>
+
+
+                        </div>
+
+                </div>
+
+ {% endfor %}

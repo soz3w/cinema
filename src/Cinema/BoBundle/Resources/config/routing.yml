@@ -54,9 +54,14 @@ cinema_bo_movies_tag:
 cinema_bo_Tags:
     path:     /bo/tags
     defaults: { _controller: CinemaBoBundle:Categories:getTags}
+cinema_bo_actor:
+    path:     /bo/actor/{id}
+    defaults: { _controller: CinemaBoBundle:Actors:getActor}
+    requirements:
+            id: \d+
 cinema_bo_Actors:
     path:     /bo/actors
-    defaults: { _controller: CinemaBoBundle:Actors:getActors}
+    defaults: { _controller: CinemaBoBundle:Actors:getBestActors}
 cinema_bo_Directors:
     path:     /bo/directors
     defaults: { _controller: CinemaBoBundle:Directors:getDirectors}

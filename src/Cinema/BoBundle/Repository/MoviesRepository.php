@@ -7,36 +7,48 @@ use Doctrine\ORM\Mapping as ORM;
 
 class MoviesRepository extends EntityRepository
 {
-    public function getMoviesCovered()
+    public function getMoviesCovered($limit)
     {
             $query=$this->getEntityManager()->createQuery(
-                "select m
-                  from CinemaBoBundle:Movies m
-                  where m.visible =1
-                  and m.cover=1
-                  and m.dateRelease <= :today"
+                "SELECT m
+                  FROM CinemaBoBundle:Movies m
+                  WHERE m.visible =1
+                  AND m.cover=1
+                  AND m.dateRelease <= :today"
             )
             ->setParameter("today", new \DateTime("now"))
-            ->setMaxResults(6); //limit
+            ->setMaxResults($limit); //limit
 
         //setFirstResult for offset
 
-        return $query->getResult();
+        try {
+            $movies = $query->getResult();
+        } catch (\Doctrine\Orm\NoResultException $e) {
+            $actors = null;
+        }
+
+        return $movies;
     }
-    public function getMoviesBest()
+    public function getBestMovies($limit)
     {
         $query=$this->getEntityManager()->createQuery(
-            "select m
-                  from CinemaBoBundle:Movies m
-                  where m.visible =1
-                  and m.cover=1
-                  and m.dateRelease <= :today"
+            "SELECT m
+                  FROM CinemaBoBundle:Movies m
+                  WHERE m.visible =1
+                  AND m.cover=1
+                  AND m.dateRelease <= :today"
         )
             ->setParameter("today", new \DateTime("now"))
-            ->setMaxResults(6); //limit
+            ->setMaxResults($limit); //limit
 
         //setFirstResult for offset
 
-        return $query->getResult();
+        try {
+            $movies = $query->getResult();
+        } catch (\Doctrine\Orm\NoResultException $e) {
+            $actors = null;
+        }
+
+        return $movies;
     }
 }

@@ -11,7 +11,7 @@ class MoviesController extends Controller
 {
     public function getMovieAction(Movies $movie,$id)
     {
-        return $this->render('CinemaBoBundle:Movies:Movie.html.twig',array("movie"=>$movie));
+        return $this->render('CinemaBoBundle:Movies:movie.html.twig',array("movie"=>$movie));
     }
     public function removeMovieAction(Movies $movie,$id)
     {
@@ -28,8 +28,8 @@ class MoviesController extends Controller
         //getting the entity manager
         $em =$this->getDoctrine()->getManager();
         $repoMovies=$em->getRepository("CinemaBoBundle:Movies");
-        $listMoviesBest = $repoMovies->getMoviesBest();
-        return $this->render('CinemaBoBundle:Movies:BestMovies.html.twig',array("bestMovies"=>$listMoviesBest));
+        $listMoviesBest = $repoMovies->getBestMovies(6);
+        return $this->render('CinemaBoBundle:Movies:bestMovies.html.twig',array("bestMovies"=>$listMoviesBest));
     }
 
     public function listMoviesAction()
@@ -47,16 +47,9 @@ class MoviesController extends Controller
         );*/
 
         $repoMovies=$em->getRepository("CinemaBoBundle:Movies");
-        $listMovies = $repoMovies->getMoviesCovered();
+        $listMovies = $repoMovies->getMoviesCovered(6);
 
-
-
-        /* foreach ($listMovies as $movie) {
-             // $advert est une instance de Advert
-             echo $movie->getContent();
-         }*/
-
-        return $this->render('CinemaBoBundle:Movies:Movies.html.twig',array("movies"=>$listMovies));
+        return $this->render('CinemaBoBundle:Movies:movies.html.twig',array("movies"=>$listMovies));
     }
 
     //paramConverter to see
@@ -72,7 +65,7 @@ class MoviesController extends Controller
 
         $listMovies = $category->getMovies();
 
-        return $this->render('CinemaBoBundle:Movies:Movies.html.twig',array("movies"=>$listMovies));
+        return $this->render('CinemaBoBundle:Movies:movies.html.twig',array("movies"=>$listMovies));
     }
     public function listMoviesByTagAction($tagId)
     {
@@ -86,6 +79,6 @@ class MoviesController extends Controller
 
         $listMovies = $tag->getMovies();
 
-        return $this->render('CinemaBoBundle:Movies:Movies.html.twig',array("movies"=>$listMovies));
+        return $this->render('CinemaBoBundle:Movies:movies.html.twig',array("movies"=>$listMovies));
     }
 }

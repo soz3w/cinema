@@ -1,0 +1,16 @@
+ {% for actor in actors %}
+
+                <div class="panel panel-warning">
+                        <div class='panel-body'>
+
+
+                                        <a  href="{{ path('cinema_bo_actor',{'id':actor.id})}}">
+                                                {{  actor.firstname ~" " ~actor.lastname }}
+                                        </a>
+                                        <span>nb films</span><span class="badge espace">{{ actor.nbMovies }}</span>
+
+                        </div>
+
+                </div>
+
+ {% endfor %}

@@ -35,6 +35,27 @@
                         </p>
 
                     </div>
+                    <div>
+                        <small>Film du même type:</small>
+                        <p>
+                            {% for movieRel in movie.moviesRelated %}
+                                <a   href="{{ path('cinema_bo_movie',{'id':movieRel.id})}}">
+                                    <span class="label label-warning">{{ movieRel.title }}</span>
+                                </a>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div>
+                        <small>Commentaires
+                            <div>
+                                {% for comment in movie.comments %}
+
+                                        <p>{{ comment.content }}</p>
+
+                                {% endfor %}
+                            </div>
+                        </small>
+                    </div>
 
                 </div>
 
