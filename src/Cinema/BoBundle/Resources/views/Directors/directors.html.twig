@@ -1,0 +1,10 @@
+{% extends "CinemaBoBundle::layout.html.twig" %}
+{% block content %}
+    {% for director in directors %}
+        <li>
+            <a  href="{{ path('cinema_bo_director',{'id':director.id})}}">
+                {{  director.firstname ~" " ~director.lastname }}
+            </a>
+        </li>
+    {% endfor %}
+{% endblock %}

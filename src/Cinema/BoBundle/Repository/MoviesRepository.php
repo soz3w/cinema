@@ -51,4 +51,35 @@ class MoviesRepository extends EntityRepository
 
         return $movies;
     }
+    public function getBestExpectedMovies($limit)
+    {
+        $query=$this->getEntityManager()->createQuery(
+            "SELECT m
+                  FROM CinemaBoBundle:Movies m
+                  WHERE m.notePresse >0
+                  AND m.dateRelease > :today
+                  ORDER BY m.notePresse desc "
+        )
+            ->setParameter("today", new \DateTime("now"))
+            ->setMaxResults($limit); //limit
+
+        //setFirstResult for offset
+
+        try {
+            $movies = $query->getResult();
+        } catch (\Doctrine\Orm\NoResultException $e) {
+            $actors = null;
+        }
+
+        return $movies;
+    }
+    public function countMovies()
+    {
+        $query=$this->getEntityManager()->createQuery(
+            "SELECT count(m.id) as nbMovies
+                  FROM CinemaBoBundle:Movies m
+                  "
+        );
+        return $query->getSingleScalarResult();
+    }
 }

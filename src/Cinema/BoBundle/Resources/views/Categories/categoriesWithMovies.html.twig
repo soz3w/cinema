@@ -1,0 +1,6 @@
+{% for category in categories %}
+    <li class="list-group-item"><a  href="{{ path('cinema_bo_movies_category',
+        {'catId':category.id})}}">{{category.title}}</a>
+        <span class="pull-right badge">{{ category.nbMovies}}</span>
+    </li>
+{% endfor %}

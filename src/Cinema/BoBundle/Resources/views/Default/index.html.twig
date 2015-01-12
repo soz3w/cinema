@@ -1,45 +1,94 @@
 {% extends "CinemaBoBundle::layout.html.twig" %}
 {% block content %}
-    <div class="col-sm-4">
-        {% for movie in movies %}
-
-            <div class="allMovies panel panel-warning">
-                <div class='panel-body'>
-                    <p class="text-right">
-                        <a href="{{ path('cinema_bo_movie_remove',{'id':movie.id})}}" title="Delete the movie">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </a>
-                    </p>
-                    <p>
-                        <a class="btn btn-xs btn-success" href="{{ path('cinema_bo_movies_category',
-                        {'catId':movie.categories.id})}}">{{ movie.categories.title }}
-                        </a>
-                    </p>
-                    <p>
-                        {% for tag in movie.tags %}
-                            <a class="btn btn-xs btn-warning" href="{{ path('cinema_bo_movies_tag',
-                            {'tagId':tag.id})}}">{{ tag.word }}
-                            </a>
-                        {% endfor %}
-                    </p>
-                    <p>
-                        <a  href="{{ path('cinema_bo_movie',{'id':movie.id})}}">
-                            {{ movie.title }}
-                        </a>
-                    </p>
-                    <p>
-                        <img class="img-thumbnail" src="{{ movie.image }}">
-                    </p>
-                    <p class='text-justify'>
-                        {{movie.synopsis|striptags|truncate(200, true)}}
-                    </p>
-
-                </div>
-
+<div class="col-sm-4" id="myCollapse1">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <a href="#itemContent2"  data-parent="#myCollapse1" class="panel-title" data-toggle="collapse"><span class="glyphicon glyphicon-camera"></span> Meilleurs films à l'affiche</a>
+        </div>
+        <div id="itemContent2" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <ul class="list-group">
+                    {{ render(controller('CinemaBoBundle:Movies:getBestMovies')) }}
+                </ul>
             </div>
+        </div>
+        <div class="panel-heading">
+            <a href="#itemContent5"  data-parent="#myCollapse1" class="panel-title" data-toggle="collapse"><span class="glyphicon glyphicon-camera"></span> Films les plus attendus</a>
+        </div>
+        <div id="itemContent5" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <ul class="list-group">
+                    {{ render(controller('CinemaBoBundle:Movies:getBestExpectedMovies')) }}
+                </ul>
+            </div>
+        </div>
 
-        {% endfor %}
+
+        <div class="panel-heading">
+            <a href="#itemContent3" data-parent="#myCollapse1" class="panel-title" data-toggle="collapse"><span class="glyphicon glyphicon-user"></span> Meilleurs acteurs</a>
+        </div>
+        <div id="itemContent3" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <ul class="list-group">
+                    {{ render(controller('CinemaBoBundle:Actors:getBestActors')) }}
+                </ul>
+            </div>
+        </div>
+        <div class="panel-heading">
+            <a href="#itemContent4" data-parent="#myCollapse1" class="panel-title" data-toggle="collapse"><span class="glyphicon glyphicon-user"></span> Meilleurs Réalisateurs</a>
+        </div>
+        <div id="itemContent4" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <ul class="list-group">
+                    {{ render(controller('CinemaBoBundle:Directors:getBestDirectors')) }}
+                </ul>
+            </div>
+        </div>
+
     </div>
-
-
+</div>
+<div class="col-sm-4" id="myCollapse2">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <a href="#itemContent6" data-parent="#myCollapse2" class="panel-title" data-toggle="collapse"><span class="glyphicon glyphicon-tag"></span> Tags</a>
+        </div>
+        <div id="itemContent6" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <ul class="list-group">
+                    {{ render(controller('CinemaBoBundle:Tags:getTags')) }}
+                </ul>
+            </div>
+        </div>
+        <div class="panel-heading">
+            <a href="#itemContent7" data-parent="#myCollapse2" class="panel-title" data-toggle="collapse"><span class="glyphicon glyphicon-tasks"></span> Catégories</a>
+        </div>
+        <div id="itemContent7" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <ul class="list-group">
+                    {{ render(controller('CinemaBoBundle:Categories:getCategoriesWithMovies')) }}
+                </ul>
+            </div>
+        </div>
+        <div class="panel-heading">
+            <a href="#itemContent8" data-parent="#myCollapse2" class="panel-title" data-toggle="collapse"><span class="glyphicon glyphicon-tasks"></span> Statistiques</a>
+        </div>
+        <div id="itemContent8" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <ul class="list-unstyled">
+                    {{ render(controller('CinemaBoBundle:Default:stats')) }}
+                </ul>
+            </div>
+        </div>
+        <div class="panel-heading">
+            <a href="#itemContent9" data-parent="#myCollapse2" class="panel-title" data-toggle="collapse"><span class="glyphicon glyphicon-tasks"></span> Film du jour</a>
+        </div>
+        <div id="itemContent9" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <ul class="list-group">
+                    {{ render(controller('CinemaBoBundle:Movies:getRandomMovie')) }}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

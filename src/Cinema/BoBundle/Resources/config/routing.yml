@@ -28,8 +28,11 @@ cinema_bo_movies:
 cinema_bo_movies_best:
     path:     /bo/bestmovies
     defaults: { _controller: CinemaBoBundle:Movies:getBestMovies }
+cinema_bo_movies_bestExpected:
+    path:     /bo/bestexpectedmovies
+    defaults: { _controller: CinemaBoBundle:Movies:getBestExpectedMovies }
 cinema_bo_movie:
-    path:     /cinema/bo/movie/{id}
+    path:     /bo/movie/{id}
     defaults: { _controller: CinemaBoBundle:Movies:getMovie }
     requirements:
             id: \d+
@@ -61,7 +64,12 @@ cinema_bo_actor:
             id: \d+
 cinema_bo_Actors:
     path:     /bo/actors
-    defaults: { _controller: CinemaBoBundle:Actors:getBestActors}
+    defaults: { _controller: CinemaBoBundle:Actors:getActors}
+cinema_bo_director:
+    path:     /bo/director/{id}
+    defaults: { _controller: CinemaBoBundle:Directors:getDirector}
+    requirements:
+            id: \d+
 cinema_bo_Directors:
     path:     /bo/directors
     defaults: { _controller: CinemaBoBundle:Directors:getDirectors}

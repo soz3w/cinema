@@ -24,9 +24,21 @@ class CategoriesController extends Controller
         //getting the repository for movies
         $repoCategories=$em->getRepository("CinemaBoBundle:Categories");
 
-        $listCategories =  $repoCategories->getCategories(6);
+        $listCategories =  $repoCategories->getCategories(50);
 
         return $this->render('CinemaBoBundle:Categories:categories.html.twig',array("categories"=>$listCategories));
+    }
+    public function getCategoriesWithMoviesAction()
+    {
+        //getting the entity manager
+        $em =$this->getDoctrine()->getManager();
+
+        //getting the repository for movies
+        $repoCategories=$em->getRepository("CinemaBoBundle:Categories");
+
+        $listCategories =  $repoCategories->getCategoriesWithMovies(6);
+
+        return $this->render('CinemaBoBundle:Categories:categoriesWithMovies.html.twig',array("categories"=>$listCategories));
     }
 
 

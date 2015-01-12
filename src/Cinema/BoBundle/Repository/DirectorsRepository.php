@@ -5,14 +5,14 @@ namespace Cinema\BoBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-class ActorsRepository extends EntityRepository
+class DirectorsRepository extends EntityRepository
 {
-    public function getBestActors($limit)
+    public function getBestDirectors($limit)
     {
             $query=$this->getEntityManager()->createQuery(
-                "SELECT a.id,a.firstname,a.lastname,a.image,count(m.id) as nbMovies
-                  FROM CinemaBoBundle:Actors a JOIN a.movies m
-                  group by a.id,a.firstname,a.lastname,a.image
+                "SELECT d.id,d.firstname,d.lastname,d.image,count(m.id) as nbMovies
+                  FROM CinemaBoBundle:Directors d JOIN d.movies m
+                  group by d.id,d.firstname,d.lastname,d.image
                   ORDER BY nbMovies DESC
                  "
             )
@@ -22,36 +22,36 @@ class ActorsRepository extends EntityRepository
 
 
         try {
-            $actors = $query->getResult();
+            $directors = $query->getResult();
         } catch (\Doctrine\Orm\NoResultException $e) {
-            $actors = null;
+            $directors = null;
         }
 
-        return $actors;
+        return $directors;
     }
 
-    public function getActors($limit)
+    public function getDirectors($limit)
     {
         $query=$this->getEntityManager()->createQuery(
-            "SELECT a
-                  FROM CinemaBoBundle:Actors a"
+            "SELECT d
+                  FROM CinemaBoBundle:Directors d"
         )
             ->setMaxResults($limit); //limit
         //setFirstResult for offset
 
         try {
-            $actors = $query->getResult();
+            $directors = $query->getResult();
         } catch (\Doctrine\Orm\NoResultException $e) {
-            $actors = null;
+            $directors = null;
         }
 
-        return $actors;
+        return $directors;
     }
-    public function countActors()
+    public function countDirectors()
     {
         $query=$this->getEntityManager()->createQuery(
-            "SELECT count(a.id) as nbActors
-                  FROM CinemaBoBundle:Actors a
+            "SELECT count(d.id) as nbDirectors
+                  FROM CinemaBoBundle:Directors d
                   "
         );
         return $query->getSingleScalarResult();

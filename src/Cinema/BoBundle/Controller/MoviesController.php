@@ -23,6 +23,19 @@ class MoviesController extends Controller
         return new RedirectResponse($this->generateUrl("cinema_bo_movies"));
     }
 
+    public function getRandomMovieAction()
+    {
+        //getting the entity manager
+        $em =$this->getDoctrine()->getManager();
+        $repoMovies=$em->getRepository("CinemaBoBundle:Movies");
+        $listMoviesBest = $repoMovies->getBestMovies(6);
+        shuffle($listMoviesBest);
+       // array_rand also
+        $movie = $listMoviesBest[0];
+
+        return $this->render('CinemaBoBundle:Movies:randomMovie.html.twig',array("movie"=>$movie));
+    }
+
     public function getBestMoviesAction()
     {
         //getting the entity manager
@@ -30,6 +43,14 @@ class MoviesController extends Controller
         $repoMovies=$em->getRepository("CinemaBoBundle:Movies");
         $listMoviesBest = $repoMovies->getBestMovies(6);
         return $this->render('CinemaBoBundle:Movies:bestMovies.html.twig',array("bestMovies"=>$listMoviesBest));
+    }
+    public function getBestExpectedMoviesAction()
+    {
+        //getting the entity manager
+        $em =$this->getDoctrine()->getManager();
+        $repoMovies=$em->getRepository("CinemaBoBundle:Movies");
+        $listMoviesBest = $repoMovies->getBestExpectedMovies(6);
+        return $this->render('CinemaBoBundle:Movies:bestExpectedMovies.html.twig',array("bestMovies"=>$listMoviesBest));
     }
 
     public function listMoviesAction()

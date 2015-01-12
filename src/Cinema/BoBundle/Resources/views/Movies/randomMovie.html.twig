@@ -1,0 +1,15 @@
+<li class="list-group-item">
+    <a  href="{{ path('cinema_bo_movie',{'id':movie.id})}}">
+        {{ movie.title }}
+    </a>
+</li>
+<li class="list-group-item">
+    <img class="img-thumbnail" src="{{ movie.image }}">
+</li>
+<li class="list-group-item">
+    <p class='text-justify'>
+        {{movie.synopsis|striptags|truncate(80, true)}}
+    </p>
+</li>
+
+

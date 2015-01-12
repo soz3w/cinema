@@ -1,0 +1,8 @@
+ {% for director in directors %}
+<li class="list-group-item">
+    <a  href="{{ path('cinema_bo_director',{'id':director.id})}}">
+        {{  director.firstname ~" " ~director.lastname }}
+    </a>
+    <span>nb films</span><span class="badge espace">{{ director.nbMovies }}</span>
+</li>
+ {% endfor %}

@@ -10,8 +10,9 @@ class CategoriesRepository extends EntityRepository
     public function getCategories($limit)
     {
             $query=$this->getEntityManager()->createQuery(
-                "SELECT c
-                  FROM CinemaBoBundle:Categories c JOIN c.movies m"
+                "SELECT c.id,c.title
+                  FROM CinemaBoBundle:Categories c
+                  "
             )
             ->setMaxResults($limit); //limit
             //setFirstResult for offset
@@ -23,5 +24,34 @@ class CategoriesRepository extends EntityRepository
         }
 
         return $categories;
+    }
+    public function getCategoriesWithMovies($limit)
+    {
+        $query=$this->getEntityManager()->createQuery(
+            "SELECT c.id,c.title,count(m.id) as nbMovies
+                  FROM CinemaBoBundle:Categories c JOIN c.movies m
+                  group by c.id,c.title
+                  ORDER BY nbMovies DESC
+                  "
+        )
+            ->setMaxResults($limit); //limit
+        //setFirstResult for offset
+
+        try {
+            $categories = $query->getResult();
+        } catch (\Doctrine\Orm\NoResultException $e) {
+            $categories = null;
+        }
+
+        return $categories;
+    }
+    public function countCategories()
+    {
+        $query=$this->getEntityManager()->createQuery(
+            "SELECT count(c.id) as nbCategories
+                  FROM CinemaBoBundle:Categories c
+                  "
+        );
+        return $query->getSingleScalarResult();
     }
 }

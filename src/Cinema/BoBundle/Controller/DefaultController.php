@@ -13,12 +13,35 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return new RedirectResponse($this->generateUrl("cinema_bo_movies"));
+       // return new RedirectResponse($this->generateUrl("cinema_bo_movies"));
+        return $this->render('CinemaBoBundle:Default:index.html.twig');
     }
     public function contactAction()
     {
+
         return $this->render('CinemaBoBundle:Default:contact.html.twig');
     }
+    public function statsAction()
+    {
+        $em =$this->getDoctrine()->getManager();
+
+        $repoMovies=$em->getRepository("CinemaBoBundle:Movies");
+        $nbMovies= $repoMovies->countMovies();
+
+        $repoDirectors=$em->getRepository("CinemaBoBundle:Directors");
+        $nbDirectors= $repoDirectors->countDirectors();
+
+        $repoCategories=$em->getRepository("CinemaBoBundle:Categories");
+        $nbCategories= $repoCategories->countCategories();
+
+        $repoActors=$em->getRepository("CinemaBoBundle:Actors");
+        $nbActors= $repoActors->countActors();
+
+        return $this->render('CinemaBoBundle:Default:stats.html.twig',
+            array("nbMovies"=>$nbMovies,"nbDirectors"=>$nbDirectors,
+                "nbCategories"=>$nbCategories,"nbActors"=>$nbActors));
+    }
+
     public function blankAction()
     {
         //getting the entity manager

@@ -4,14 +4,14 @@
     <div class="panel panel-warning">
         <div class='panel-body'>
             <div>
-                  <h2>{{  actor.firstname ~" " ~actor.lastname }}</h2>
+                  <h2>{{  director.firstname ~" " ~director.lastname }}</h2>
 
 
             </div>
             <p>
-                    <img class="img-thumbnail" src="{{ actor.image }}">
+                    <img class="img-thumbnail" src="{{ director.image }}">
             </p>
-            {% for movie in actor.movies %}
+            {% for movie in director.movies %}
                 <div class="col-sm-4">
                     <p>
                         <a  href="{{ path('cinema_bo_movie',{'id':movie.id})}}">
