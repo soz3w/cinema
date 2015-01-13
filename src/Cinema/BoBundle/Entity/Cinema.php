@@ -65,11 +65,19 @@ class Cinema
     private $movies;
 
     /**
+     * @var \Sessions
+     *
+     * @ORM\OneToMany(targetEntity="Sessions",mappedBy="cinema")
+     */
+    private $sessions;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->movies = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->sessions = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -174,6 +182,30 @@ class Cinema
     {
         return $this->dateCreated;
     }
+
+    /**
+     * Add sessions
+     *
+     * @param \Cinema\BoBundle\Entity\Sessions $sessions
+     * @return Cinema
+     */
+    public function addSession(\Cinema\BoBundle\Entity\Sessions $sessions)
+    {
+        $this->sessions[] = $sessions;
+
+        return $this;
+    }
+
+    /**
+     * Remove Sessions
+     *
+     * @param \Cinema\BoBundle\Entity\Sessions $sessions
+     */
+    public function removeSession(\Cinema\BoBundle\Entity\Sessions $sessions)
+    {
+        $this->sessions->removeElement($sessions);
+    }
+
 
     /**
      * Add movies

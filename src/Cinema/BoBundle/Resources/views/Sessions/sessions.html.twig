@@ -1,0 +1,25 @@
+<ul>
+    {% for session in sessions %}
+        <li class="row list-group-item">
+            <div class="col-sm-4">
+                <a  href="{{ path('cinema_bo_movie',{'id':session.movieId})}}">
+                    <small>{{ session.movieTitle }}</small>
+                    <img src="{{ session.image }}" alt=""/>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <small><i>{{session.cinemaTitle }}</i></small>
+                <small><i>{{session.ville }}</i></small>
+            </div>
+            <div class="col-sm-4">
+                <span class="pull-right label label-primary">{{ session.dateSession|date("d/m/Y i:s", "Europe/Paris") }}</span>
+            </div>
+
+        </li>
+    {% endfor %}
+</ul>
+
+
+
+
+

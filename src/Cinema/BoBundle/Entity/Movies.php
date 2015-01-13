@@ -242,6 +242,13 @@ class Movies
     private $cinemas;
 
     /**
+     * @var \Sessions
+     *
+     * @ORM\OneToMany(targetEntity="Sessions",mappedBy="movies")
+     */
+    private $sessions;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Directors", mappedBy="movies")
@@ -305,6 +312,7 @@ class Movies
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
         $this->user = new \Doctrine\Common\Collections\ArrayCollection();
         $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->sessions = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -1035,21 +1043,53 @@ class Movies
     /**
      * Remove Comments
      *
-     * @param \Cinema\BoBundle\Entity\Comments $actors
+     * @param \Cinema\BoBundle\Entity\Comments $comments
      */
     public function removeComment(\Cinema\BoBundle\Entity\Comments $comments)
     {
         $this->actors->removeElement($comments);
     }
-
     /**
-     * Get actors
+     * Get comments
      *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * Add sessions
+     *
+     * @param \Cinema\BoBundle\Entity\Sessions $sessions
+     * @return Movies
+     */
+    public function addSession(\Cinema\BoBundle\Entity\Sessions $sessions)
+    {
+        $this->sessions[] = $sessions;
+
+        return $this;
+    }
+
+    /**
+     * Remove Sessions
+     *
+     * @param \Cinema\BoBundle\Entity\Sessions $sessions
+     */
+    public function removeSession(\Cinema\BoBundle\Entity\Sessions $sessions)
+    {
+        $this->sessions->removeElement($sessions);
+    }
+
+    /**
+     * Get sessions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSessions()
+    {
+        return $this->sessions;
     }
 
 

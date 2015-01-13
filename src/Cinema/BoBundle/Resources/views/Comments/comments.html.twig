@@ -1,0 +1,76 @@
+
+    <div class="tab-pane active" id="comA">
+        <ul>
+            {% for comment in commentsActives %}
+                <li class="row list-group-item">
+                    <div class="col-sm-3">
+                        <a  href="{{ path('cinema_bo_movie',{'id':comment.movieId})}}">
+                            <small>{{ comment.movieTitle }}</small>
+                        </a>
+                    </div>
+                    <div class="col-sm-3">
+                        <small><i>{{comment.content }}</i></small>
+                    </div>
+                    <div class="col-sm-3">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <span class="label label-default">{{ comment.username }}</span>
+                    </div>
+                    <div class="col-sm-3">
+                        <span class="pull-right label label-primary">{{ comment.dateCreated|date("d/m/Y i:s", "Europe/Paris") }}</span>
+                    </div>
+
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="tab-pane" id="comE">
+        {% for comment in commentsEncoursVal %}
+
+            <li class="row list-group-item">
+                <div class="col-sm-3">
+                    <a  href="{{ path('cinema_bo_movie',{'id':comment.movieId})}}">
+                        <small>{{ comment.movieTitle }}</small>
+                    </a>
+                </div>
+                <div class="col-sm-3">
+                    <small><i>{{comment.content }}</i></small>
+                </div>
+                <div class="col-sm-3">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <span class="label label-default">{{ comment.username }}</span>
+                </div>
+                <div class="col-sm-3">
+                    <span class="pull-right label label-primary">{{ comment.dateCreated|date("d/m/Y i:s", "Europe/Paris") }}</span>
+                </div>
+
+            </li>
+        {% endfor %}
+    </div>
+    <div class="tab-pane" id="comI">
+        {% for comment in commentsInActives %}
+            <li class="row list-group-item">
+                <div class="col-sm-3">
+                    <a  href="{{ path('cinema_bo_movie',{'id':comment.movieId})}}">
+                        <small>{{ comment.movieTitle }}</small>
+                    </a>
+                </div>
+                <div class="col-sm-3">
+                    <small><i>{{comment.content }}</i></small>
+                </div>
+                <div class="col-sm-3">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <span class="label label-default">{{ comment.username }}</span>
+                </div>
+                <div class="col-sm-3">
+                    <span class="glyphicon glyphicon-date"></span>
+                    <span class="pull-right label label-primary">{{ comment.dateCreated|date("d/m/Y i:s", "Europe/Paris") }}</span>
+                </div>
+
+            </li>
+        {% endfor %}
+    </div>
+
+
+
+
+

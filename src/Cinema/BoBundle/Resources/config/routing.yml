@@ -79,3 +79,9 @@ cinema_bo_Seances:
 cinema_bo_Cinemas:
     path:     /bo/cinemas
     defaults: { _controller: CinemaBoBundle:Cinemas:getCinemas}
+cinema_bo_Comments:
+    path:     /bo/comments
+    defaults: { _controller: CinemaBoBundle:Cinemas:getComments}
+cinema_bo_Sessions:
+    path:     /bo/sessions
+    defaults: { _controller: CinemaBoBundle:Sessions:getSessions}

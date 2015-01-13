@@ -31,7 +31,7 @@ class Sessions
     /**
      * @var \Movies
      *
-     * @ORM\ManyToOne(targetEntity="Movies")
+     * @ORM\ManyToOne(targetEntity="Movies",inversedBy="sessions")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="movies_id", referencedColumnName="id")
      * })
@@ -41,7 +41,7 @@ class Sessions
     /**
      * @var \Cinema
      *
-     * @ORM\ManyToOne(targetEntity="Cinema")
+     * @ORM\ManyToOne(targetEntity="Cinema",inversedBy="sessions")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="cinema_id", referencedColumnName="id")
      * })

@@ -5,39 +5,39 @@
 
 {% block body %}
     <div class="container">
-    {% block menu %}
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container-fluid">
-                <ul class="nav navbar-nav">
-                    <li> <a class ="accueil" href="{{ path('cinema_bo')}}">Accueil</a> </li>
-                    <li> <a class ="login" href="{{ path('cinema_bo_movies')}}">Films</a> </li>
-                    <li> <a class ="register" href="{{ path('cinema_bo_categories')}}" >Categories</a> </li>
-                    <li> <a class ="contact" href="{{ path('cinema_bo_Actors')}}">Acteurs</a> </li>
-                    <li> <a class ="contact" href="{{ path('cinema_bo_Directors')}}">Realisateurs</a> </li>
-                    <li> <a class ="contact" href="{{ path('cinema_bo_Seances')}}">Séances</a> </li>
-                    <li> <a class ="contact" href="{{ path('cinema_bo_Cinemas')}}">Cinémas</a> </li>
+        {% block menu %}
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container-fluid">
+                    <ul class="nav navbar-nav">
+                        <li> <a class ="accueil" href="{{ path('cinema_bo')}}">Accueil</a> </li>
+                        <li> <a class ="login" href="{{ path('cinema_bo_movies')}}">Films</a> </li>
+                        <li> <a class ="register" href="{{ path('cinema_bo_categories')}}" >Categories</a> </li>
+                        <li> <a class ="contact" href="{{ path('cinema_bo_Actors')}}">Acteurs</a> </li>
+                        <li> <a class ="contact" href="{{ path('cinema_bo_Directors')}}">Realisateurs</a> </li>
+                        <li> <a class ="contact" href="{{ path('cinema_bo_Seances')}}">Séances</a> </li>
+                        <li> <a class ="contact" href="{{ path('cinema_bo_Cinemas')}}">Cinémas</a> </li>
 
-                </ul>
+                    </ul>
+
+                </div>
+            </nav>
+        {% endblock %}
+        {% block sidebar %}
+            <div class="col-sm-4">
+                {{ include("CinemaBoBundle:slots:sidebar.html.twig") }}
 
             </div>
-        </nav>
-    {% endblock %}
-    {% block sidebar %}
-        <div class="col-sm-4">
-            {{ include("CinemaBoBundle:slots:sidebar.html.twig") }}
+        {% endblock %}
+        {% block content %}
 
-        </div>
-    {% endblock %}
-    {% block content %}
+        {% endblock %}
 
-    {% endblock %}
-
-        {%  use("CinemaBoBundle:slots:footer.html.twig") %}
-        {% block footer %}
+            {%  use("CinemaBoBundle:slots:footer.html.twig") %}
+            {% block footer %}
+                {{ parent() }}
+            {% endblock %}
+        {% block javascripts %}
             {{ parent() }}
         {% endblock %}
-    {% block javascripts %}
-        {{ parent() }}
-    {% endblock %}
     </div>
 {% endblock %}
