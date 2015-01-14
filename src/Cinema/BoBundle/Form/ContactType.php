@@ -5,11 +5,19 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Component\Validator\Constraints\Url;
+use Symfony\Component\Validator\Constraints\Email;
 
 class ContactType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $builder->add('recipient', "choice",
+            array('label'=>"Destinataire",
+                'choices'=>['Administrateur','Commercial','Technicien'],
+                'attr'=>array('class' => 'form-control')
+            ));
         $builder->add('subject', "text",
                         array('label'=>"Sujet",
                                'attr'=>array('placeholder' => 'saisissez votre sujet',
@@ -18,7 +26,8 @@ class ContactType extends AbstractType
                                 'constraints' => array(
                                                         new NotBlank(array('message'=>'Renseignez le sujet')),
                                                         new Length(array('min' => 3,'minMessage'=>'Saisir 3 caracteres au minimum')),
-                                                        new Length(array('max' => 20,'maxMessage'=>'Saisir 20 caracteres au maximum'))
+                                                        new Length(array('max' => 100,'maxMessage'=>'Saisir 100 caracteres au maximum'))
+
                                                      )
                         )
                     );
@@ -29,21 +38,30 @@ class ContactType extends AbstractType
                                              ),
                                 'constraints' => array(
                                     new NotBlank(),
-                                    new Length(array('min' => 3,'minMessage'=>'Saisir 3 caracteres au minimum'))
+                                    new Length(array('min' => 3,'minMessage'=>'Saisir 3 caracteres au minimum')),
+                                    new Length(array('max' => 60,'maxMessage'=>'Saisir 60 caracteres au maximum')),
+                                    new Regex(array('pattern'=>'/[A-Za-z]/'))
                                 )
             ));
         $builder->add('url', "text",
-            array('label'=>"Url",
-                'attr'=>array('placeholder' => 'Tapez url',
-                    'class' => 'form-control input-sm'
-                )
+                        array('label'=>"Url",
+                                'attr'=>array('placeholder' => 'Tapez url',
+                                                'class' => 'form-control input-sm'),
+                            'constraints' => array(
+                                new NotBlank(array('message'=>'Renseignez une url')),
+                                new Url(array('message'=>'Renseignez une url valide'))
+                            )
             ));
         $builder->add('email', "email",
-            array('label'=>"Email",
-                'attr'=>array('placeholder' => 'saisissez votre email',
-                    'class' => 'form-control input-sm'
-                )
-            ));
+                        array('label'=>"Email",
+                                'attr'=>array('placeholder' => 'saisissez votre email',
+                                         'class' => 'form-control input-sm'
+                                        ),
+                                'constraints' => array(
+                                          new NotBlank(array('message'=>'Renseignez un email')),
+                                         new Email(array('message'=>'Renseignez un email valide'))
+                                )
+                        ));
         $builder->add('message', "textarea",
             array('label'=>"Message",
                 'attr'=>array('placeholder' => 'saisissez votre message',
