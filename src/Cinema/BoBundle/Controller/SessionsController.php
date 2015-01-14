@@ -15,8 +15,9 @@ class SessionsController extends Controller
     {
         //getting the entity manager
         $em =$this->getDoctrine()->getManager();
-        $repoSessions=$em->getRepository("CinemaBoBundle:Comments");
-        $sessions = $repoSessions->getComments(6, new \DateTime("2013-03-15"));
+        $repoSessions=$em->getRepository("CinemaBoBundle:Sessions");
+        $sessions = $repoSessions->getSessions(6, new \DateTime("2013-03-15"));
+
         return $this->render('CinemaBoBundle:Sessions:sessions.html.twig',
             array("sessions"=>$sessions));
     }
