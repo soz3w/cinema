@@ -7,7 +7,9 @@ use Cinema\BoBundle\Entity\Categories;
 use Cinema\BoBundle\Entity\Tags;
 use Doctrine\Common\Util\Debug;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Cinema\BoBundle\Form\ContactType;
 
 class DefaultController extends Controller
 {
@@ -16,10 +18,28 @@ class DefaultController extends Controller
        // return new RedirectResponse($this->generateUrl("cinema_bo_movies"));
         return $this->render('CinemaBoBundle:Default:index.html.twig');
     }
-    public function contactAction()
+    public function contactAction(Request $request)
     {
+        /*if ($request->getMethod()=="POST")
+        {
 
-        return $this->render('CinemaBoBundle:Default:contact.html.twig');
+        }*/
+        $form = $this->createForm(new ContactType(),null,array(
+                        "action"=>$this->generateUrl("cinema_bo_contact"),
+                        "method"=>"POST",
+                        "attr"=>array("novalidate"=>"novalidate")
+
+                                )
+                    );
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            // Les données sont un tableau avec les clés "name", "email", et "message"
+            $data = $form->getData();
+            var_dump($data);
+        }
+
+        return $this->render('CinemaBoBundle:Default:contact.html.twig',array("form"=>$form->CreateView()));
     }
     public function statsAction()
     {

@@ -40,6 +40,18 @@ class CategoriesController extends Controller
 
         return $this->render('CinemaBoBundle:Categories:categoriesWithMovies.html.twig',array("categories"=>$listCategories));
     }
+    public function getCategoriesMoviesChartAction()
+    {
+        //getting the entity manager
+        $em =$this->getDoctrine()->getManager();
+
+        //getting the repository for movies
+        $repoCategories=$em->getRepository("CinemaBoBundle:Categories");
+
+        $listCategories =  $repoCategories->getCategoriesWithMovies(50);
+
+        return $this->render('CinemaBoBundle:Categories:categoriesMoviesChart.html.twig',array("categories"=>$listCategories));
+    }
 
 
 }

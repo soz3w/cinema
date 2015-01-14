@@ -13,6 +13,7 @@ class SessionsRepository extends EntityRepository
                 "SELECT s.id,s.dateSession,c.ville,c.title as cinemaTitle,
                     m.title as movieTitle,m.id as movieId,m.image
                   FROM CinemaBoBundle:Sessions s JOIN s.cinema c JOIN s.movies m
+                  ORDER BY m.id
 
 
                   "

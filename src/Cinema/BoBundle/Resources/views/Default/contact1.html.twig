@@ -1,0 +1,55 @@
+{% extends "CinemaBoBundle::layout.html.twig" %}
+{% block content %}
+    <div class="col-md-8">
+        <h1 class="">Contact</h1>
+        <form action="{{ path('cinema_bo_contact') }}" method="POST">
+            <h4 class="msgError"></h4>
+            <div class="form-group" >
+                <label for="subject" class="col-xs-3 control-label">Sujet </label>
+                <div class="col-xs-6">
+                    <input  class="form-control input-sm"  type="text" name="subject">
+                </div>
+
+            </div>
+            <div class="form-group" >
+                <label for="Nom" class="col-xs-3 control-label">Nom </label>
+                <div class="col-xs-6">
+                    <input  class="form-control input-sm"  type="text" name="nom">
+                </div>
+
+            </div>
+            <div class="form-group" >
+                <label for="Nom" class="col-xs-3 control-label">Email </label>
+                <div class="col-xs-6">
+                    <input  class="form-control input-sm"  type="email" name="email">
+                </div>
+
+            </div>
+            <div class="form-group" >
+                <label for="url" class="col-xs-3 control-label">Url </label>
+                <div class="col-xs-6">
+                    <input  class="form-control input-sm"  type="email" name="url">
+                </div>
+
+            </div>
+
+            <div class="form-group" >
+                <label for="url" class="col-xs-3 control-label">Message </label>
+                <div class="col-xs-6">
+                    <textarea class="form-control input-sm" name="message" id="" cols="30" rows="10"></textarea>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-xs-9 col-xs-offset-3">
+                    <button  class="btn btn-primary btn-sm" type="submit">Envoyer</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+{% endblock %}
+

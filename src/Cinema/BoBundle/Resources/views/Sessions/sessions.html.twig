@@ -3,8 +3,8 @@
         <li class="row list-group-item">
             <div class="col-md-4">
                 <a  href="{{ path('cinema_bo_movie',{'id':session.movieId})}}">
-                    <small>{{ session.movieTitle }}</small>
                     <img src="{{ session.image }}" alt=""/>
+                    <p><small>{{ session.movieTitle }}</small> </p>
                 </a>
             </div>
             <div class="col-md-4">
@@ -12,7 +12,7 @@
                 <small><i>{{session.ville }}</i></small>
             </div>
             <div class="col-md-4">
-                <span class="pull-right label label-primary">{{ session.dateSession|date("d/m/Y i:s", "Europe/Paris") }}</span>
+                <span class="pull-right label label-primary">{{ session.dateSession|date("d/m/Y h:i:s", "Europe/Paris") }}</span>
             </div>
 
         </li>
