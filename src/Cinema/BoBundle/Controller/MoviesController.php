@@ -6,12 +6,33 @@ use Cinema\BoBundle\Entity\Movies;
 use Doctrine\Common\Util\Debug;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Cinema\BoBundle\Form\MoviesType;
 
 class MoviesController extends Controller
 {
     public function getMovieAction(Movies $movie,$id)
     {
         return $this->render('CinemaBoBundle:Movies:movie.html.twig',array("movie"=>$movie));
+    }
+    public function newMovieAction(Request $request)
+    {
+        $movies=new Movies();
+        $form = $this->createForm('Movies',$movies,array(
+                "action"=>$this->generateUrl("cinema_bo_movies_new"),
+                "method"=>"POST",
+                "attr"=>array("novalidate"=>"novalidate")
+
+            )
+        );
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($movies);
+            $em->flush();
+        }
+        return $this->render('CinemaBoBundle:Movies:newMovie.html.twig',array("form"=>$form->CreateView()));
     }
     public function removeMovieAction(Movies $movie,$id)
     {

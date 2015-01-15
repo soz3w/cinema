@@ -25,6 +25,9 @@ cinema_bo_test:
 cinema_bo_movies:
     path:     /bo/movies
     defaults: { _controller: CinemaBoBundle:Movies:listMovies }
+cinema_bo_movies_new:
+    path:     /bo/movies/new
+    defaults: { _controller: CinemaBoBundle:Movies:newMovie }
 cinema_bo_movies_best:
     path:     /bo/bestmovies
     defaults: { _controller: CinemaBoBundle:Movies:getBestMovies }
