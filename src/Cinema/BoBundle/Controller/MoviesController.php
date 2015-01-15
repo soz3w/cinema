@@ -17,8 +17,8 @@ class MoviesController extends Controller
     }
     public function newMovieAction(Request $request)
     {
-        $movies=new Movies();
-        $form = $this->createForm('Movies',$movies,array(
+        $movies = new Movies;
+        $form = $this->createForm(new MoviesType(),$movies,array(
                 "action"=>$this->generateUrl("cinema_bo_movies_new"),
                 "method"=>"POST",
                 "attr"=>array("novalidate"=>"novalidate")

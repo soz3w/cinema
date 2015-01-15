@@ -17,7 +17,7 @@ class MoviesType extends AbstractType
 
         $builder->add('typeFilm', "text",
                         array('label'=>"Type de film",
-                               'label_attr' => array('class' => 'col-md-3'),
+                               'label_attr' => array('class' => ''),
                                'attr'=>array('placeholder' => 'saisissez le type de film',
                                              'class' => 'form-control'
                                             ),
@@ -31,7 +31,7 @@ class MoviesType extends AbstractType
                     );
         $builder->add('title', null,
                         array('label'=>"Title",
-                              'label_attr' => array('class' => 'col-md-3'),
+                              'label_attr' => array('class' => ''),
                                'attr'=>array('placeholder' => 'saisissez le titre du film',
                                              'class' => 'form-control input-sm'
                                              ),
@@ -44,7 +44,7 @@ class MoviesType extends AbstractType
             ));
         $builder->add('synopsis', "text",
                         array('label'=>"Synopsis",
-                              'label_attr' => array('class' => 'col-md-3'),
+                              'label_attr' => array('class' => ''),
                                 'attr'=>array('placeholder' => 'Tapez url',
                                                 'class' => 'form-control input-sm'),
                             'constraints' => array(
@@ -53,7 +53,7 @@ class MoviesType extends AbstractType
             ));
         $builder->add('description', 'textarea',
                         array('label'=>"Description",
-                                'label_attr' => array('class' => 'col-md-3'),
+                                'label_attr' => array('class' => ''),
                                 'attr'=>array('placeholder' => 'saisissez la description',
                                          'class' => 'form-control input-sm'
                                         ),
@@ -64,7 +64,7 @@ class MoviesType extends AbstractType
                         );
         $builder->add('image', null,
                         array('label'=>"Image",
-                              'label_attr' => array('class' => 'col-md-3'),
+                              'label_attr' => array('class' => ''),
                               'attr'=>array('placeholder' => 'entrez url image',
                                             'class' => 'form-control input-sm'
                                             )

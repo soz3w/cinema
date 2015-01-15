@@ -21,7 +21,7 @@ class ContactType extends AbstractType
             ));
         $builder->add('subject', "text",
                         array('label'=>"Sujet",
-                               'label_attr' => array('class' => 'col-md-3'),
+                               'label_attr' => array('class' => ''),
                                'attr'=>array('placeholder' => 'saisissez votre sujet',
                                              'class' => 'form-control'
                                             ),
@@ -35,7 +35,7 @@ class ContactType extends AbstractType
                     );
         $builder->add('nom', "text",
                         array('label'=>"Nom",
-                              'label_attr' => array('class' => 'col-md-3'),
+                              'label_attr' => array('class' => ''),
                                'attr'=>array('placeholder' => 'saisissez votre nom',
                                              'class' => 'form-control input-sm'
                                              ),
@@ -48,7 +48,7 @@ class ContactType extends AbstractType
             ));
         $builder->add('url', "text",
                         array('label'=>"Url",
-                              'label_attr' => array('class' => 'col-md-3'),
+                              'label_attr' => array('class' => ''),
                                 'attr'=>array('placeholder' => 'Tapez url',
                                                 'class' => 'form-control input-sm'),
                             'constraints' => array(
@@ -58,7 +58,7 @@ class ContactType extends AbstractType
             ));
         $builder->add('email', "email",
                         array('label'=>"Email",
-                                'label_attr' => array('class' => 'col-md-3'),
+                                'label_attr' => array('class' => ''),
                                 'attr'=>array('placeholder' => 'saisissez votre email',
                                          'class' => 'form-control input-sm'
                                         ),
@@ -69,7 +69,7 @@ class ContactType extends AbstractType
                         ));
         $builder->add('message', "textarea",
                         array('label'=>"Message",
-                              'label_attr' => array('class' => 'col-md-3'),
+                              'label_attr' => array('class' => ''),
                               'attr'=>array('placeholder' => 'saisissez votre message',
                                             'class' => 'form-control input-sm'
                                             )
