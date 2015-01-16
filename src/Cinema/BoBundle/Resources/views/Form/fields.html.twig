@@ -31,6 +31,12 @@
     {{ parent() }}
 {% endblock form_label %}
 
+{% block button_widget %}
+<div class="col-md-offset-6 col-md-4">
+    {{ parent() }}
+</div>
+{% endblock button_widget %}
+
 {# et enfin les erreurs #}
 {% block form_errors %}
     {% spaceless %}

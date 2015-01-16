@@ -17,7 +17,7 @@ class MoviesController extends Controller
     }
     public function newMovieAction(Request $request)
     {
-        $movies = new Movies;
+        $movies = new Movies();
         $form = $this->createForm(new MoviesType(),$movies,array(
                 "action"=>$this->generateUrl("cinema_bo_movies_new"),
                 "method"=>"POST",
@@ -25,9 +25,34 @@ class MoviesController extends Controller
 
             )
         );
+
+        //hydrating $movies, pas besoin de getdata
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($movies);
+            $em->flush();
+            return new RedirectResponse($this->generateUrl("cinema_bo_movies"));
+        }
+        return $this->render('CinemaBoBundle:Movies:newMovie.html.twig',array("form"=>$form->CreateView()));
+    }
+    public function editMovieAction(Movies $movies,$id,Request $request)
+    {
+        $form = $this->createForm(new MoviesType(),$movies,array(
+                "action"=>$this->generateUrl("cinema_bo_movie_edit",array('id'=>$movies->getId())),
+                "method"=>"POST",
+                "attr"=>array("novalidate"=>"novalidate")
+
+            )
+        );
+
+        //hydrating $movies, pas besoin de getdata
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($movies);
             $em->flush();

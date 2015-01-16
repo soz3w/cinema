@@ -8,4 +8,10 @@
 
 
 {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        handleMovies_actors_collection();
+    </script>
+{% endblock %}
 

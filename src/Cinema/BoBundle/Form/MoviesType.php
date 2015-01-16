@@ -42,13 +42,13 @@ class MoviesType extends AbstractType
                                     new Regex(array('pattern'=>'/[A-Za-z]/'))
                                 )
             ));
-        $builder->add('synopsis', "text",
+        $builder->add('ref', "text",
                         array('label'=>"Synopsis",
                               'label_attr' => array('class' => ''),
-                                'attr'=>array('placeholder' => 'Tapez url',
+                                'attr'=>array('placeholder' => 'Tapez la ref',
                                                 'class' => 'form-control input-sm'),
                             'constraints' => array(
-                                new NotBlank(array('message'=>'Renseignez le synopsis'))
+                                new NotBlank(array('message'=>'Renseignez la ref'))
                             )
             ));
         $builder->add('description', 'textarea',
@@ -62,17 +62,53 @@ class MoviesType extends AbstractType
                                     )
                                 )
                         );
-        $builder->add('image', null,
-                        array('label'=>"Image",
+        $builder->add('price', null,
+                        array('label'=>"Prix",
                               'label_attr' => array('class' => ''),
-                              'attr'=>array('placeholder' => 'entrez url image',
+                              'attr'=>array('placeholder' => 'entrez le prix',
                                             'class' => 'form-control input-sm'
                                             )
             ));
 
+        $builder->add('shopMode', null,
+            array('label'=>"Shop mode",
+                'label_attr' => array('class' => ''),
+                'attr'=>array('placeholder' => 'entrez le shop mode',
+                    'class' => 'form-control input-sm'
+                )
+            ));
+
+        $builder->add('shopTypeDvd', null,
+            array('label'=>"Shop type dvd",
+                'label_attr' => array('class' => ''),
+                'attr'=>array('placeholder' => 'entrez le shop type dvd',
+                    'class' => 'form-control input-sm'
+                )
+            ));
+        $builder->add('taxe', null,
+            array('label'=>"Taxe",
+                'label_attr' => array('class' => ''),
+                'attr'=>array('placeholder' => 'entrez la taxe',
+                    'class' => 'form-control input-sm'
+                )
+            ));
+
+        $builder->add('Actors', 'collection', array('type' => new ActorsType(),
+                                                    'allow_add'=>true,
+                                                    'allow_delete' =>true)
+        );
+
+        $builder->add('categories', new CategoriesType());
+
+
+        $builder->add('tags', 'entity', array('class'  => 'CinemaBoBundle:Tags',
+                                               'property' => 'word',
+                                               'multiple' => true,
+                                                'attr'=>array("class"=>"selectpicker"))
+        );
         $builder->add('send', "submit",
-                       array('label'=>"",
-                             'attr'=>array('class' => 'btn btn-primary btn-sm')
+                       array('label'=>"Envoyer",
+                             'attr'=>array('class' => 'btn btn-primary btn-lg pull-right')
             ));
 
     }

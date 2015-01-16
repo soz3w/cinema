@@ -108,15 +108,7 @@ class Actors
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Movies", inversedBy="actors")
-     * @ORM\JoinTable(name="actors_movies",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="actors_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="movies_id", referencedColumnName="id")
-     *   }
-     * )
+     * @ORM\ManyToMany(targetEntity="Movies", mappedBy="actors")
      */
     private $movies;
 

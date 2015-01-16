@@ -28,6 +28,16 @@ cinema_bo_movies:
 cinema_bo_movies_new:
     path:     /bo/movies/new
     defaults: { _controller: CinemaBoBundle:Movies:newMovie }
+cinema_bo_movie_remove:
+    path:     /bo/movie/remove/{id}
+    defaults: { _controller: CinemaBoBundle:Movies:removeMovie }
+    requirements:
+            id: \d+
+cinema_bo_movie_edit:
+    path:     /bo/movie/edit/{id}
+    defaults: { _controller: CinemaBoBundle:Movies:editMovie }
+    requirements:
+            id: \d+
 cinema_bo_movies_best:
     path:     /bo/bestmovies
     defaults: { _controller: CinemaBoBundle:Movies:getBestMovies }
@@ -37,11 +47,6 @@ cinema_bo_movies_bestExpected:
 cinema_bo_movie:
     path:     /bo/movie/{id}
     defaults: { _controller: CinemaBoBundle:Movies:getMovie }
-    requirements:
-            id: \d+
-cinema_bo_movie_remove:
-    path:     /bo/movie/remove/{id}
-    defaults: { _controller: CinemaBoBundle:Movies:removeMovie }
     requirements:
             id: \d+
 cinema_bo_movies_category:

@@ -220,7 +220,7 @@ class Movies
     /**
      * @var \Categories
      *
-     * @ORM\ManyToOne(targetEntity="Categories",inversedBy="movies")
+     * @ORM\ManyToOne(targetEntity="Categories",inversedBy="movies",cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="categories_id", referencedColumnName="id")
      * })
@@ -230,7 +230,15 @@ class Movies
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Actors", mappedBy="movies")
+     * @ORM\ManyToMany(targetEntity="Actors", inversedBy="movies",cascade={"persist"})
+     * @ORM\JoinTable(name="actors_movies",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="movies_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="actors_id", referencedColumnName="id")
+     *   }
+     * )
      */
     private $actors;
 
