@@ -1,95 +1,95 @@
 cinema_bo:
-    path:     /bo
+    path:     /
     defaults: { _controller: CinemaBoBundle:Default:index }
 cinema_bo_contact:
-    path:     /bo/contact
+    path:     /contact
     defaults: { _controller: CinemaBoBundle:Default:contact }
 cinema_bo_blank:
-    path:     /bo/blank
+    path:     /blank
     defaults: { _controller: CinemaBoBundle:Default:blank }
 cinema_bo_MentionsLegales:
-    path:     /bo/mentionslegales
+    path:     /mentionslegales
     defaults: { _controller: CinemaBoBundle:Static:mentionslegales }
 cinema_bo_cgu:
-    path:     /bo/cgu
+    path:     /cgu
     defaults: { _controller: CinemaBoBundle:Static:cgu }
 cinema_bo_MentionsLegales:
-    path:     /bo/credits
+    path:     /credits
     defaults: { _controller: CinemaBoBundle:Static:credit }
 cinema_bo_Apropos:
-    path:     /bo/apropos
+    path:     /apropos
     defaults: { _controller: CinemaBoBundle:Static:apropos }
 cinema_bo_test:
-    path:     /bo/test
+    path:     /test
     defaults: { _controller: CinemaBoBundle:Static:test }
 cinema_bo_movies:
-    path:     /bo/movies
+    path:     /movies
     defaults: { _controller: CinemaBoBundle:Movies:listMovies }
 cinema_bo_movies_new:
-    path:     /bo/movies/new
+    path:     /movies/new
     defaults: { _controller: CinemaBoBundle:Movies:newMovie }
 cinema_bo_movie_remove:
-    path:     /bo/movie/remove/{id}
+    path:     /movie/remove/{id}
     defaults: { _controller: CinemaBoBundle:Movies:removeMovie }
     requirements:
             id: \d+
 cinema_bo_movie_edit:
-    path:     /bo/movie/edit/{id}
+    path:     /movie/edit/{id}
     defaults: { _controller: CinemaBoBundle:Movies:editMovie }
     requirements:
             id: \d+
 cinema_bo_movies_best:
-    path:     /bo/bestmovies
+    path:     /bestmovies
     defaults: { _controller: CinemaBoBundle:Movies:getBestMovies }
 cinema_bo_movies_bestExpected:
-    path:     /bo/bestexpectedmovies
+    path:     /bestexpectedmovies
     defaults: { _controller: CinemaBoBundle:Movies:getBestExpectedMovies }
 cinema_bo_movie:
-    path:     /bo/movie/{id}
+    path:     /movie/{id}
     defaults: { _controller: CinemaBoBundle:Movies:getMovie }
     requirements:
             id: \d+
 cinema_bo_movies_category:
-    path:     /bo/movies/category/{catId}
+    path:     /movies/category/{catId}
     defaults: { _controller: CinemaBoBundle:Movies:listMoviesByCategory }
     requirements:
             catId: \d+
 cinema_bo_categories:
-    path:     /bo/categories
+    path:     /categories
     defaults: { _controller: CinemaBoBundle:Categories:getCategories }
 cinema_bo_movies_tag:
-    path:     /bo/movies/tag/{tagId}
+    path:     /movies/tag/{tagId}
     defaults: { _controller: CinemaBoBundle:Movies:listMoviesByTag }
     requirements:
             catId: \d+
 cinema_bo_Tags:
-    path:     /bo/tags
+    path:     /tags
     defaults: { _controller: CinemaBoBundle:Categories:getTags}
 cinema_bo_actor:
-    path:     /bo/actor/{id}
+    path:     /actor/{id}
     defaults: { _controller: CinemaBoBundle:Actors:getActor}
     requirements:
             id: \d+
 cinema_bo_Actors:
-    path:     /bo/actors
+    path:     /actors
     defaults: { _controller: CinemaBoBundle:Actors:getActors}
 cinema_bo_director:
-    path:     /bo/director/{id}
+    path:     /director/{id}
     defaults: { _controller: CinemaBoBundle:Directors:getDirector}
     requirements:
             id: \d+
 cinema_bo_Directors:
-    path:     /bo/directors
+    path:     /directors
     defaults: { _controller: CinemaBoBundle:Directors:getDirectors}
 cinema_bo_Seances:
-    path:     /bo/seances
+    path:     /seances
     defaults: { _controller: CinemaBoBundle:Seances:getSeances}
 cinema_bo_Cinemas:
-    path:     /bo/cinemas
+    path:     /cinemas
     defaults: { _controller: CinemaBoBundle:Cinemas:getCinemas}
 cinema_bo_Comments:
-    path:     /bo/comments
+    path:     /comments
     defaults: { _controller: CinemaBoBundle:Cinemas:getComments}
 cinema_bo_Sessions:
-    path:     /bo/sessions
+    path:     /sessions
     defaults: { _controller: CinemaBoBundle:Sessions:getSessions}

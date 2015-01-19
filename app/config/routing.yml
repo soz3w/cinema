@@ -1,7 +1,13 @@
 cinema_bo:
     resource: "@CinemaBoBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /administration
 
 app:
     resource: @AppBundle/Controller/
     type:     annotation
+cinema_bo_login:
+    path:     /users/signin
+    defaults: { _controller: CinemaBoBundle:Users:signin}
+cinema_bo_login_check:
+    path:     /administration/users/logincheck
+    defaults: { _controller: CinemaBoBundle:Users:signin}

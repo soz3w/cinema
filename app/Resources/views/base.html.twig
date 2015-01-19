@@ -8,7 +8,11 @@
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
+
+    {% block class_body %}
     <body class="theme-default main-menu-animated">
+    {% endblock class_body %}
+
 
         {% block body %}{% endblock %}
         {% block javascripts %}

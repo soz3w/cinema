@@ -1,48 +1,66 @@
 function handleMovies_actors_collection() {
 
+    var index = 0;
     var $container = $('div#Movies_Actors');
-    //console.log($container);
-    // On ajoute un lien pour ajouter une nouvelle Acteur
+
     var $lienAjout = $('<a href="#" id="ajout_acteur" class="btn btn-success">Acteur ++</a>');
-    $("div[id^='Movies_Actors_']").append($lienAjout);
-    // On ajoute un nouveau champ à chaque clic sur le lien d'ajout.
+
+    if ($container.children('#ajout_acteur').length == 0)
+    {
+        $container.prepend($lienAjout);
+    }
+
+    //$("div[id^='Movies_Actors_']").append($lienAjout);
+
     $lienAjout.click(function(e) {
         ajouterActeur($container);
-        e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+        e.preventDefault();
         return false;
     });
-// On définit un compteur unique pour nommer les champs qu'on va ajouter dynamiquement
-    var index = $container.find(':input').length;
-// On ajoute un premier champ directement s'il n'en existe pas déjà.
+
+
+    //var index = $container.find(':input').length;
+    var $actorDivs = $("div[id^='Movies_Actors_']");
+    var index = $actorDivs.length;
 
     if (index == 0) {
-        ajouterActeur($container);
-    } else {
-        // Pour chaque acteur déjà existante, on ajoute un lien de suppression
-        $container.children("div[class^='Movies_Actors_']").each(function() {
-            ajouterLienSuppression($(this));
-        });
+        ajouterActeur();
     }
-// La fonction qui ajoute un formulaire Acteur
-    function ajouterActeur($container) {
+    else {
+            //cas form non valide
+            for (j=0;j<index;j++)
+            {
+                $prototype =$('#Movies_Actors_'+(j));
+                $('#Movies_Actors_'+(j)).parent().parent().children('label').text('Acteur n°'+(j+1));
 
-// - le texte "__name__" qu'il contient par le numéro du champ
+                    if ($prototype.children('.supprimer').length == 0)
+                         ajouterLienSuppression($prototype);
+            }
+        }
+
+
+    function ajouterActeur() {
+        //var $actorDivs = $("div[id^='Movies_Actors_']");
         var $prototype = $($container.attr('data-prototype').replace(/__name__label__/g, 'Acteur n°' +
         (index+1)).replace(/__name__/g, index));
-        ajouterLienSuppression($prototype);
+        //console.log($prototype);
+        $prototype.prop('id', 'Movies_Actors_'+(index+1));
+        ajouterLienSuppression($prototype.children('.col-sm-10'));
         $container.append($prototype);
         index++;
     }
-// La fonction qui ajoute un lien de suppression d'une Acteur
+
     function ajouterLienSuppression($prototype) {
-// Création du lien
-        $lienSuppression = $('<a href="#" class="btn btn-danger">Supprimer</a>');
-        // Ajout du lien
+
+        //var $actorDiv = $prototype.children("div[id^='Movies_Actors_']");
+       // console.log($prototype);
+        $lienSuppression = $('<a href="#" class="pull-right supprimer btn btn-danger">Supprimer</a>');
+
         $prototype.append($lienSuppression);
-        // Ajout du listener sur le clic du lien
+
         $lienSuppression.click(function(e) {
             $prototype.remove();
-            e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+            e.preventDefault();
             return false;
         });
     }
