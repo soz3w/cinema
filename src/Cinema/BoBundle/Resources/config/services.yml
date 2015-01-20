@@ -2,3 +2,9 @@ services:
 #    cinema_bo.example:
 #        class: Cinema\BoBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+
+services:
+    cinema.contactForm:
+        class: Cinema\BoBundle\Form\ContactType
+        tags:
+            - { name: form.type,alias: contact}

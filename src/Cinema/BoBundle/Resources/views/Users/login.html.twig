@@ -4,23 +4,26 @@
     {% if error %}
         <div>{{ error.message }}</div>
     {% endif %}
-
-
-            {{ form_start(form) }}
-
-                {{ form_label(form._username) }}
-
-
+<div class="col-sm-9 row well">
+    {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_label(form._username) }}
+            <div class="col-sm-2">
                 {{ form_widget(form._username, {'attr': {'value': last_username}}) }}
-
-
-                {{ form_label(form._password) }}
-
-
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form._password) }}
+            <div class="col-sm-2">
                 {{ form_widget(form._password) }}
+            </div>
+        </div>
+
+    {{ form_end(form,{'render_rest': true}) }}
+
+</div>
 
 
-            {{ form_end(form,{'render_rest': true}) }}
 
 
 

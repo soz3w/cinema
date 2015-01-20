@@ -24,7 +24,7 @@ class DefaultController extends Controller
         {
 
         }*/
-        $form = $this->createForm(new ContactType(),null,array(
+        $form = $this->createForm('contact',null,array(
                         "action"=>$this->generateUrl("cinema_bo_contact"),
                         "method"=>"POST",
                         "attr"=>array("novalidate"=>"novalidate")
