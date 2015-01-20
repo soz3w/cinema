@@ -11,3 +11,12 @@ cinema_bo_login:
 cinema_bo_login_check:
     path:     /administration/users/logincheck
     defaults: { _controller: CinemaBoBundle:Users:signin}
+cinema_bo_Logout:
+    path:     /administration/users/logout
+    defaults: { _controller: CinemaBoBundle:Users:logout}
+cinema_bo_denied:
+    path:     /administration/users/denied
+    defaults: { _controller: CinemaBoBundle:Users:denied}
+cinema_bo_users_new:
+    path:     /users/new
+    defaults: { _controller: CinemaBoBundle:Users:newUser}

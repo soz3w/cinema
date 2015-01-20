@@ -317,7 +317,6 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function __construct()
     {
-        $this->enabled = true;
         $this->movies = new \Doctrine\Common\Collections\ArrayCollection();
         $this->salt = md5(uniqid(null, true));
     }
@@ -326,7 +325,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -349,7 +348,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get email
      *
-     * @return string
+     * @return string 
      */
     public function getEmail()
     {
@@ -372,7 +371,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get username
      *
-     * @return string
+     * @return string 
      */
     public function getUsername()
     {
@@ -395,7 +394,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get password
      *
-     * @return string
+     * @return string 
      */
     public function getPassword()
     {
@@ -438,7 +437,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get ville
      *
-     * @return string
+     * @return string 
      */
     public function getVille()
     {
@@ -461,7 +460,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get zipcode
      *
-     * @return integer
+     * @return integer 
      */
     public function getZipcode()
     {
@@ -484,7 +483,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get tel
      *
-     * @return string
+     * @return string 
      */
     public function getTel()
     {
@@ -507,7 +506,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get ip
      *
-     * @return string
+     * @return string 
      */
     public function getIp()
     {
@@ -530,7 +529,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get enabled
      *
-     * @return boolean
+     * @return boolean 
      */
     public function getEnabled()
     {
@@ -553,7 +552,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get lastLogin
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getLastLogin()
     {
@@ -576,7 +575,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get expired
      *
-     * @return boolean
+     * @return boolean 
      */
     public function getExpired()
     {
@@ -599,7 +598,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get locked
      *
-     * @return boolean
+     * @return boolean 
      */
     public function getLocked()
     {
@@ -622,7 +621,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get usernameCanonical
      *
-     * @return string
+     * @return string 
      */
     public function getUsernameCanonical()
     {
@@ -645,7 +644,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get emailCanonical
      *
-     * @return string
+     * @return string 
      */
     public function getEmailCanonical()
     {
@@ -668,7 +667,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get salt
      *
-     * @return string
+     * @return string 
      */
     public function getSalt()
     {
@@ -691,7 +690,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get expiresAt
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getExpiresAt()
     {
@@ -714,7 +713,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get confirmationToken
      *
-     * @return string
+     * @return string 
      */
     public function getConfirmationToken()
     {
@@ -737,7 +736,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get passwordRequestedAt
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getPasswordRequestedAt()
     {
@@ -760,7 +759,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get googleid
      *
-     * @return string
+     * @return string 
      */
     public function getGoogleid()
     {
@@ -783,7 +782,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get googleaccesstoken
      *
-     * @return string
+     * @return string 
      */
     public function getGoogleaccesstoken()
     {
@@ -806,7 +805,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get flickrid
      *
-     * @return string
+     * @return string 
      */
     public function getFlickrid()
     {
@@ -829,7 +828,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get flickraccesstoken
      *
-     * @return string
+     * @return string 
      */
     public function getFlickraccesstoken()
     {
@@ -852,7 +851,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get githubid
      *
-     * @return string
+     * @return string 
      */
     public function getGithubid()
     {
@@ -875,7 +874,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get githubaccesstoken
      *
-     * @return string
+     * @return string 
      */
     public function getGithubaccesstoken()
     {
@@ -898,7 +897,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get linkedinaccesstoken
      *
-     * @return string
+     * @return string 
      */
     public function getLinkedinaccesstoken()
     {
@@ -921,7 +920,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get linkedinid
      *
-     * @return string
+     * @return string 
      */
     public function getLinkedinid()
     {
@@ -944,12 +943,12 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get roles
      *
-     * @return array
+     * @return array 
      */
     public function getRoles()
     {
-        // return $this->roles;
-        return array('ROLE_ADMIN');
+       // return $this->roles;
+        return array('ROLE_USER');
     }
 
     /**
@@ -1000,7 +999,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get extras
      *
-     * @return string
+     * @return string 
      */
     public function getExtras()
     {
@@ -1023,7 +1022,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get longitude
      *
-     * @return float
+     * @return float 
      */
     public function getLongitude()
     {
@@ -1046,7 +1045,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get latitude
      *
-     * @return float
+     * @return float 
      */
     public function getLatitude()
     {
@@ -1069,7 +1068,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get facebookid
      *
-     * @return string
+     * @return string 
      */
     public function getFacebookid()
     {
@@ -1092,7 +1091,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get facebookaccesstoken
      *
-     * @return string
+     * @return string 
      */
     public function getFacebookaccesstoken()
     {
@@ -1115,7 +1114,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get twitterid
      *
-     * @return string
+     * @return string 
      */
     public function getTwitterid()
     {
@@ -1138,7 +1137,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get twitteraccesstoken
      *
-     * @return string
+     * @return string 
      */
     public function getTwitteraccesstoken()
     {
@@ -1161,7 +1160,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get credentialsExpired
      *
-     * @return boolean
+     * @return boolean 
      */
     public function getCredentialsExpired()
     {
@@ -1184,7 +1183,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get credentialsExpireAt
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getCredentialsExpireAt()
     {
@@ -1207,7 +1206,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getCreatedAt()
     {
@@ -1230,7 +1229,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get updatedAt
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getUpdatedAt()
     {
@@ -1253,7 +1252,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get deletedAt
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getDeletedAt()
     {
@@ -1276,7 +1275,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get lastactivity
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getLastactivity()
     {
@@ -1309,7 +1308,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get movies
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getMovies()
     {
