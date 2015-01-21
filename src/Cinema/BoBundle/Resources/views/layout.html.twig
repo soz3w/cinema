@@ -301,6 +301,19 @@
 
 
         {% endblock %}
+        <div>
+        {% if app.user %}
+            utilisateur connecté: {{ app.user.username }}
+            <p><a href="{{path('cinema_bo_Logout')}}">Logout</a></p>
+            {% if is_granted('ROLE_SUPER_ADMIN') %}
+                <p>
+                    <a href="{{ path('cinema_bo_users_new') }}">Ajouter un utilisateur</a>
+                </p>
+            {% endif %}
+        {% else %}
+            <p>login: <a href="{{path('cinema_bo_login')}}">Login</a></p>
+        {% endif %}
+        </div>
         <div id="content-wrapper">
             <ul class="breadcrumb breadcrumb-page">
                 <div class="breadcrumb-label text-light-gray">You are here: </div>

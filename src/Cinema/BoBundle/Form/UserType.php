@@ -18,6 +18,16 @@ class UserType extends AbstractType
             ->add('email')
             ->add('username')
             ->add('password')
+            ->add('roles', 'choice',
+                array(
+                        'choices'  => array(
+                                'ROLE_USER' => 'ROLE_USER',
+                                'ROLE_ADMIN' => 'ROLE_ADMIN',
+                                'ROLE_SUPER_ADMIN' => 'ROLE_SUPER_ADMIN'
+                                ),
+                        'multiple' => true
+                        ))
+
             ->add('send', "submit",
                 array('label'=>"Envoyer",
                     'attr'=>array('class' => 'btn btn-primary btn-lg pull-right')

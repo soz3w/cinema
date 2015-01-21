@@ -3,7 +3,7 @@
 
 security:
     providers:
-        administrators:
+        main:
             entity: { class: Cinema\BoBundle\Entity\User, property: username }
 
     # http://symfony.com/doc/current/book/security.html#encoding-the-user-s-password
@@ -16,14 +16,16 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#hierarchical-roles
     role_hierarchy:
-        ROLE_USER:       ROLE_USER
-        ROLE_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN,ROLE_ALLOWED_TO_SWITCH]
 
 
     # the main part of the security, where you can set up firewalls
     # for specific sections of your app
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
+        main:
+            switch_user: true
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
@@ -34,9 +36,11 @@ security:
             pattern:    ^/administration
             # it's important to notice that in this case _demo_security_check and _demo_login
             # are route names and that they are specified in the AcmeDemoBundle
+            provider: main
             form_login:
                 check_path: cinema_bo_login_check
                 login_path: cinema_bo_login
+                default_target_path: /membre/accueil
             logout:
                 path:   cinema_bo_Logout
                 target: cinema_bo_login
@@ -49,5 +53,6 @@ security:
     # http://symfony.com/doc/current/book/security.html#security-book-access-control-matching-options
     access_control:
         - { path: ^/signin, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/administration/users, roles: ROLE_SUPER_ADMIN}
         - { path: ^/administration, roles: ROLE_ADMIN}
 

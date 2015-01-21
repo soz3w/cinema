@@ -1,7 +1,7 @@
 {% extends "CinemaBoBundle::layout.html.twig" %}
 {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
 {% block content %}
-    <h1>Nouveau Utilisateur</h1>
+    <h1>{{ titre }}</h1>
     <div class="col-md-10 row well">
         {{ form(form) }}
     </div>

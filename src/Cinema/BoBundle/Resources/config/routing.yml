@@ -93,3 +93,14 @@ cinema_bo_Comments:
 cinema_bo_Sessions:
     path:     /sessions
     defaults: { _controller: CinemaBoBundle:Sessions:getSessions}
+cinema_bo_users_new:
+    path:     /users/new
+    defaults: { _controller: CinemaBoBundle:Users:newUser}
+cinema_bo_user_edit:
+    path:     /users/edit/{id}
+    defaults: { _controller: CinemaBoBundle:Users:editUser }
+    requirements:
+            id: \d+
+cinema_bo_users:
+    path:     /users
+    defaults: { _controller: CinemaBoBundle:Users:getUsers}

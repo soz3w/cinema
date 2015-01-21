@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_8D93D64992FC23A8", columns={"username_canonical"}), @ORM\UniqueConstraint(name="UNIQ_8D93D649A0D96FBF", columns={"email_canonical"})})
  * @ORM\Entity(repositoryClass="Cinema\BoBundle\Repository\UsersRepository")
  */
-class User
+class User1
 {
     /**
      * @var integer

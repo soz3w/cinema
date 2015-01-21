@@ -88,6 +88,7 @@ class UsersController extends Controller
 
     public function newUserAction(Request $request)
     {
+        $titre='Saisie nouveau utilisateur';
         $user = new User();
         $form = $this->createForm(new UserType(),$user,array(
                 "action"=>$this->generateUrl("cinema_bo_users_new"),
@@ -97,7 +98,7 @@ class UsersController extends Controller
             )
         );
 
-        //hydrating $movies, pas besoin de getdata
+
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -109,13 +110,46 @@ class UsersController extends Controller
             $encoder = $factory->getEncoder($user);
             $pass = $encoder->encodePassword($password, $user->getSalt());
             $user->setPassword($pass);
+            //$user->setRoles(array('ROLE_ADMIN'));
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
             return new RedirectResponse($this->generateUrl("cinema_bo_movies"));
         }
-        return $this->render('CinemaBoBundle:Users:newUser.html.twig',array("form"=>$form->CreateView()));
+        return $this->render('CinemaBoBundle:Users:newUser.html.twig',array("form"=>$form->CreateView(),'titre'=>$titre));
     }
 
+
+    public function editUserAction(User $user,$id,Request $request)
+    {
+        $titre = 'Editer un utilisateur';
+        $form = $this->createForm(new UserType(),$user,array(
+                "action"=>$this->generateUrl("cinema_bo_user_edit",array('id'=>$user->getId())),
+                "method"=>"POST",
+                "attr"=>array("novalidate"=>"novalidate")
+
+            )
+        );
+
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+        }
+        return $this->render('CinemaBoBundle:Users:newUser.html.twig',array("form"=>$form->CreateView(),'titre'=>$titre));
+    }
+    public function getUsersAction()
+    {
+        //getting the entity manager
+        $em =$this->getDoctrine()->getManager();
+        $repoUsers=$em->getRepository("CinemaBoBundle:User");
+        $listUsers = $repoUsers->getUsers(50);
+
+        return $this->render('CinemaBoBundle:Users:users.html.twig',array("users"=>$listUsers));
+    }
 }

@@ -1,0 +1,12 @@
+{% extends "CinemaBoBundle::layout.html.twig" %}
+{% block content %}
+{% for user in users %}
+    <li>
+        <a  href="{{ path('cinema_bo_user_edit',{'id':user.id})}}">
+               {{  user.username ~" " ~user.email }}
+        </a>
+
+    </li>
+
+ {% endfor %}
+{% endblock%}
