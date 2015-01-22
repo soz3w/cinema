@@ -39,6 +39,13 @@ class LoginType extends AbstractType
                                 )
             ));
 
+        $builder->add('_remember_me', "checkbox",
+            array('label'=>"Se souvenir de moi",
+                  'mapped'=>false,
+                  'label_attr' => array('class' => '')
+
+                ));
+
         $builder->add('send', "submit",
                        array('label'=>"login",
                              'attr'=>array('class' => 'btn btn-primary btn-sm')

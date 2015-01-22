@@ -3,8 +3,15 @@ services:
 #        class: Cinema\BoBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
 
-services:
+
     cinema.contactForm:
         class: Cinema\BoBundle\Form\ContactType
         tags:
             - { name: form.type,alias: contact}
+
+    security.access.blacklist_voter:
+        class:      Cinema\BoBundle\Security\Authorization\Voter\ClientIpVoter
+        arguments:  [@service_container, [127.0.0.2, 171.171.171.171]]
+        public:     false
+        tags:
+            -       { name: security.voter }

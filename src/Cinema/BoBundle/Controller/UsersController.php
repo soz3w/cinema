@@ -11,6 +11,8 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\SecurityContext;
 use Cinema\BoBundle\Form\LoginType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 
 class UsersController extends Controller
 {
@@ -40,10 +42,6 @@ class UsersController extends Controller
             'form'=>$form->CreateView()
 
         ));
-
-
-
-
 
     }
     public function deniedAction()
@@ -152,4 +150,37 @@ class UsersController extends Controller
 
         return $this->render('CinemaBoBundle:Users:users.html.twig',array("users"=>$listUsers));
     }
+
+
+
+    public function autologinAction($login) {
+        $em = $this->getDoctrine()->getEntityManager();
+        $repository = $em->getRepository('CinemaBoBundle:User');
+        $result = $repository->matchLoginPass($login);
+
+        if (!$result) {
+            return $this->render('CinemaBoBundle:Users:login.html.twig');
+        }
+
+
+        $token = new UsernamePasswordToken($result, $result->getPassword(), 'admin_secured_area', $result->getRoles());
+        $this->get('security.context')->setToken($token);
+        $request = $this->getRequest();
+       // $event = new InteractiveLoginEvent($request, $token);
+      //  $this->get("event_dispatcher")->dispatch("security.interactive_login", $event);
+
+
+        $session = $request->getSession();
+        $session->set('_security_secured_area',  serialize($token));
+
+
+
+
+        $router = $this->get('router');
+        $url = $router->generate('cinema_bo_movies');
+
+        return $this->redirect($url);
+
+    }
+
 }

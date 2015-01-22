@@ -27,5 +27,23 @@ class UserRepository extends EntityRepository
         return $users;
     }
 
+    public function matchLoginPass($login)
+    {
+        $query=$this->getEntityManager()->createQuery(
+            "SELECT u
+                  FROM CinemaBoBundle:User u
+                  where u.username=:login"
+        )
+            ->setParameter("login", $login);
+
+        try {
+            $pass = $query->getSingleResult();
+        } catch (\Doctrine\Orm\NoResultException $e) {
+            $pass = '';
+        }
+
+        return $pass;
+    }
+
 
 }

@@ -17,3 +17,6 @@ cinema_bo_Logout:
 cinema_bo_denied:
     path:     /administration/users/denied
     defaults: { _controller: CinemaBoBundle:Users:denied}
+cinema_bo_user_autologin:
+    path:     /users/autologin/{login}
+    defaults: { _controller: CinemaBoBundle:Users:autologin,login: saadna }
