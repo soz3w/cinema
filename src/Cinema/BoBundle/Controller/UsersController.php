@@ -166,15 +166,8 @@ class UsersController extends Controller
         $token = new UsernamePasswordToken($result, $result->getPassword(), 'admin_secured_area', $result->getRoles());
         $this->get('security.context')->setToken($token);
         $request = $this->getRequest();
-       // $event = new InteractiveLoginEvent($request, $token);
-      //  $this->get("event_dispatcher")->dispatch("security.interactive_login", $event);
-
-
         $session = $request->getSession();
-        $session->set('_security_secured_area',  serialize($token));
-
-
-
+        $session->set('_security_admin_secured_area',  serialize($token));
 
         $router = $this->get('router');
         $url = $router->generate('cinema_bo_movies');
