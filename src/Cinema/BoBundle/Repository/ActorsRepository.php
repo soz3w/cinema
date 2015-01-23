@@ -39,13 +39,9 @@ class ActorsRepository extends EntityRepository
             ->setMaxResults($limit); //limit
         //setFirstResult for offset
 
-        try {
-            $actors = $query->getResult();
-        } catch (\Doctrine\Orm\NoResultException $e) {
-            $actors = null;
-        }
 
-        return $actors;
+
+        return $query;
     }
     public function countActors()
     {

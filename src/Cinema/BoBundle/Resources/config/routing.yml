@@ -95,7 +95,7 @@ cinema_bo_Sessions:
     defaults: { _controller: CinemaBoBundle:Sessions:getSessions}
 cinema_bo_users_new:
     path:     /users/new
-    defaults: { _controller: CinemaBoBundle:Users:newUser}
+    defaults: { _controller: CinemaBoBundle:Registration:register}
 cinema_bo_user_edit:
     path:     /users/edit/{id}
     defaults: { _controller: CinemaBoBundle:Users:editUser }

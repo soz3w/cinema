@@ -3,7 +3,7 @@
 namespace Cinema\BoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * User
@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
  * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_8D93D64992FC23A8", columns={"username_canonical"}), @ORM\UniqueConstraint(name="UNIQ_8D93D649A0D96FBF", columns={"email_canonical"})})
  * @ORM\Entity(repositoryClass="Cinema\BoBundle\Repository\UserRepository")
  */
-class User implements AdvancedUserInterface, \Serializable
+class User extends BaseUser
 {
 
     /**
@@ -21,281 +21,174 @@ class User implements AdvancedUserInterface, \Serializable
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255, nullable=true)
-     */
-    private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="username", type="string", length=255, nullable=true)
-     */
-    private $username;
-
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=255, nullable=true)
-     */
-    private $password;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ville", type="string", length=200, nullable=true)
      */
-    private $ville;
+    protected $ville;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="zipcode", type="integer", nullable=true)
      */
-    private $zipcode;
+    protected $zipcode;
 
     /**
      * @var string
      *
      * @ORM\Column(name="tel", type="string", length=250, nullable=true)
      */
-    private $tel;
+    protected $tel;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ip", type="string", length=100, nullable=true)
      */
-    private $ip;
+    protected $ip;
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="enabled", type="boolean", nullable=true)
-     */
-    private $enabled;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="last_login", type="datetime", nullable=true)
-     */
-    private $lastLogin;
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="expired", type="boolean", nullable=true)
-     */
-    private $expired;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="locked", type="boolean", nullable=true)
-     */
-    private $locked;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="username_canonical", type="string", length=255, nullable=true)
-     */
-    private $usernameCanonical;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email_canonical", type="string", length=255, nullable=true)
-     */
-    private $emailCanonical;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="salt", type="string", length=255, nullable=true)
-     */
-    private $salt;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="expires_at", type="datetime", nullable=true)
-     */
-    private $expiresAt;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="confirmation_token", type="string", length=255, nullable=true)
-     */
-    private $confirmationToken;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="password_requested_at", type="datetime", nullable=true)
-     */
-    private $passwordRequestedAt;
 
     /**
      * @var string
      *
      * @ORM\Column(name="googleId", type="string", length=255, nullable=true)
      */
-    private $googleid;
+    protected $googleid;
 
     /**
      * @var string
      *
      * @ORM\Column(name="googleAccessToken", type="string", length=255, nullable=true)
      */
-    private $googleaccesstoken;
+    protected $googleaccesstoken;
 
     /**
      * @var string
      *
      * @ORM\Column(name="flickrId", type="string", length=255, nullable=true)
      */
-    private $flickrid;
+    protected $flickrid;
 
     /**
      * @var string
      *
      * @ORM\Column(name="flickrAccessToken", type="string", length=255, nullable=true)
      */
-    private $flickraccesstoken;
+    protected $flickraccesstoken;
 
     /**
      * @var string
      *
      * @ORM\Column(name="githubId", type="string", length=255, nullable=true)
      */
-    private $githubid;
+    protected $githubid;
 
     /**
      * @var string
      *
      * @ORM\Column(name="githubAccessToken", type="string", length=255, nullable=true)
      */
-    private $githubaccesstoken;
+    protected $githubaccesstoken;
 
     /**
      * @var string
      *
      * @ORM\Column(name="linkedinAccessToken", type="string", length=255, nullable=true)
      */
-    private $linkedinaccesstoken;
+    protected $linkedinaccesstoken;
 
     /**
      * @var string
      *
      * @ORM\Column(name="linkedinId", type="string", length=255, nullable=true)
      */
-    private $linkedinid;
+    protected $linkedinid;
 
-    /**
-     * @var array
-     *
-     * @ORM\Column(name="roles", type="array", nullable=true)
-     */
-    private $roles;
 
     /**
      * @var string
      *
      * @ORM\Column(name="extras", type="text", nullable=true)
      */
-    private $extras;
+    protected $extras;
 
     /**
      * @var float
      *
      * @ORM\Column(name="longitude", type="float", precision=10, scale=0, nullable=true)
      */
-    private $longitude;
+    protected $longitude;
 
     /**
      * @var float
      *
      * @ORM\Column(name="latitude", type="float", precision=10, scale=0, nullable=true)
      */
-    private $latitude;
+    protected $latitude;
 
     /**
      * @var string
      *
      * @ORM\Column(name="facebookId", type="string", length=300, nullable=true)
      */
-    private $facebookid;
+    protected $facebookid;
 
     /**
      * @var string
      *
      * @ORM\Column(name="facebookAccessToken", type="string", length=300, nullable=true)
      */
-    private $facebookaccesstoken;
+    protected $facebookaccesstoken;
 
     /**
      * @var string
      *
      * @ORM\Column(name="twitterId", type="string", length=255, nullable=true)
      */
-    private $twitterid;
+    protected $twitterid;
 
     /**
      * @var string
      *
      * @ORM\Column(name="twitterAccessToken", type="string", length=255, nullable=true)
      */
-    private $twitteraccesstoken;
+    protected $twitteraccesstoken;
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="credentials_expired", type="boolean", nullable=true)
-     */
-    private $credentialsExpired;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="credentials_expire_at", type="datetime", nullable=true)
-     */
-    private $credentialsExpireAt;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=true)
      */
-    private $createdAt;
+    protected $createdAt;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
-    private $updatedAt;
+    protected $updatedAt;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="deleted_at", type="datetime", nullable=true)
      */
-    private $deletedAt;
+    protected $deletedAt;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="lastActivity", type="datetime", nullable=true)
      */
-    private $lastactivity;
+    protected $lastactivity;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -310,16 +203,16 @@ class User implements AdvancedUserInterface, \Serializable
      *   }
      * )
      */
-    private $movies;
+    protected $movies;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->enabled = true;
+
         $this->movies = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->salt = md5(uniqid(null, true));
+        parent::__construct();
     }
 
 
@@ -402,25 +295,6 @@ class User implements AdvancedUserInterface, \Serializable
         return $this->password;
     }
 
-    public function isAccountNonExpired()
-    {
-        return true;
-    }
-
-    public function isAccountNonLocked()
-    {
-        return true;
-    }
-
-    public function isCredentialsNonExpired()
-    {
-        return true;
-    }
-
-    public function isEnabled()
-    {
-        return $this->enabled;
-    }
 
     /**
      * Set ville
@@ -537,28 +411,7 @@ class User implements AdvancedUserInterface, \Serializable
         return $this->enabled;
     }
 
-    /**
-     * Set lastLogin
-     *
-     * @param \DateTime $lastLogin
-     * @return User
-     */
-    public function setLastLogin($lastLogin)
-    {
-        $this->lastLogin = $lastLogin;
 
-        return $this;
-    }
-
-    /**
-     * Get lastLogin
-     *
-     * @return \DateTime
-     */
-    public function getLastLogin()
-    {
-        return $this->lastLogin;
-    }
 
     /**
      * Set expired
@@ -675,28 +528,7 @@ class User implements AdvancedUserInterface, \Serializable
         return $this->salt;
     }
 
-    /**
-     * Set expiresAt
-     *
-     * @param \DateTime $expiresAt
-     * @return User
-     */
-    public function setExpiresAt($expiresAt)
-    {
-        $this->expiresAt = $expiresAt;
 
-        return $this;
-    }
-
-    /**
-     * Get expiresAt
-     *
-     * @return \DateTime
-     */
-    public function getExpiresAt()
-    {
-        return $this->expiresAt;
-    }
 
     /**
      * Set confirmationToken
@@ -721,28 +553,7 @@ class User implements AdvancedUserInterface, \Serializable
         return $this->confirmationToken;
     }
 
-    /**
-     * Set passwordRequestedAt
-     *
-     * @param \DateTime $passwordRequestedAt
-     * @return User
-     */
-    public function setPasswordRequestedAt($passwordRequestedAt)
-    {
-        $this->passwordRequestedAt = $passwordRequestedAt;
 
-        return $this;
-    }
-
-    /**
-     * Get passwordRequestedAt
-     *
-     * @return \DateTime
-     */
-    public function getPasswordRequestedAt()
-    {
-        return $this->passwordRequestedAt;
-    }
 
     /**
      * Set googleid
@@ -928,61 +739,7 @@ class User implements AdvancedUserInterface, \Serializable
         return $this->linkedinid;
     }
 
-    /**
-     * Set roles
-     *
-     * @param array $roles
-     * @return User
-     */
-    public function setRoles($roles)
-    {
-        $this->roles = $roles;
 
-        return $this;
-    }
-
-    /**
-     * Get roles
-     *
-     * @return array
-     */
-    public function getRoles()
-    {
-         return $this->roles;
-        //return array('ROLE_ADMIN');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function eraseCredentials()
-    {
-    }
-
-    /**
-     * @see \Serializable::serialize()
-     */
-    public function serialize()
-    {
-        return serialize(array(
-            $this->id,
-        ));
-    }
-
-    /**
-     * @see \Serializable::unserialize()
-     */
-    public function unserialize($serialized)
-    {
-        list (
-            $this->id,
-            ) = unserialize($serialized);
-    }
-
-    public function isEqualTo(UserInterface $user)
-    {
-        return $this->username === $user->getUsername();
-    }
 
     /**
      * Set extras
@@ -1145,74 +902,10 @@ class User implements AdvancedUserInterface, \Serializable
         return $this->twitteraccesstoken;
     }
 
-    /**
-     * Set credentialsExpired
-     *
-     * @param boolean $credentialsExpired
-     * @return User
-     */
-    public function setCredentialsExpired($credentialsExpired)
-    {
-        $this->credentialsExpired = $credentialsExpired;
 
-        return $this;
-    }
 
-    /**
-     * Get credentialsExpired
-     *
-     * @return boolean
-     */
-    public function getCredentialsExpired()
-    {
-        return $this->credentialsExpired;
-    }
 
-    /**
-     * Set credentialsExpireAt
-     *
-     * @param \DateTime $credentialsExpireAt
-     * @return User
-     */
-    public function setCredentialsExpireAt($credentialsExpireAt)
-    {
-        $this->credentialsExpireAt = $credentialsExpireAt;
 
-        return $this;
-    }
-
-    /**
-     * Get credentialsExpireAt
-     *
-     * @return \DateTime
-     */
-    public function getCredentialsExpireAt()
-    {
-        return $this->credentialsExpireAt;
-    }
-
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     * @return User
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
 
     /**
      * Set updatedAt

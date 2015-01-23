@@ -24,7 +24,7 @@ class MoviesRepository extends EntityRepository
         try {
             $movies = $query->getResult();
         } catch (\Doctrine\Orm\NoResultException $e) {
-            $actors = null;
+            $movies = null;
         }
 
         return $movies;

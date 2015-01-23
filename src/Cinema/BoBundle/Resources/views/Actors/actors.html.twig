@@ -1,12 +1,28 @@
 {% extends "CinemaBoBundle::layout.html.twig" %}
 {% block content %}
-{% for actor in actors %}
-    <li>
-        <a  href="{{ path('cinema_bo_actor',{'id':actor.id})}}">
-               {{  actor.firstname ~" " ~actor.lastname }}
-        </a>
+    {# total items count #}
+    <div class="count">
+        {{ pagination.getTotalItemCount }}
+    </div>
+    <table>
+        <tr>
+            {# sorting of properties based on query components #}
+            <th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>
+            <th{% if pagination.isSorted('a.lastname') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'lastname', '.lastname') }}</th>
+        </tr>
 
-    </li>
+        {# table body #}
+        {% for actor in pagination %}
+            <tr {% if loop.index is odd %}class="color"{% endif %}>
+                <td>{{ actor.id }}</td>
+                <td>{{ actor.firstname }}</td>
+                <td>{{ actor.lastname }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
 
- {% endfor %}
 {% endblock%}

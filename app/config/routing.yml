@@ -5,8 +5,10 @@ cinema_bo:
 app:
     resource: @AppBundle/Controller/
     type:     annotation
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 cinema_bo_login:
-    path:     /users/signin
+    path:     /login
     defaults: { _controller: CinemaBoBundle:Users:signin}
 cinema_bo_login_check:
     path:     /administration/users/logincheck
@@ -20,3 +22,9 @@ cinema_bo_denied:
 cinema_bo_user_autologin:
     path:     /users/autologin/{login}
     defaults: { _controller: CinemaBoBundle:Users:autologin,login: saadna }
+
+#REST
+rest :
+  type : rest
+  resource : "routing_rest.yml"
+  prefix : /api

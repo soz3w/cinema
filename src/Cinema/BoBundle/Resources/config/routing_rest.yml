@@ -1,0 +1,4 @@
+users : 
+  type: rest
+  resource:     "CinemaBoBundle:UsersRest"
+  name_prefix:  api_
