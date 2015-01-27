@@ -1,6 +1,6 @@
 User:
     type: entity
-    table: user
+    table: fos_user
     uniqueConstraints:
         UNIQ_8D93D64992FC23A8:
             columns:
@@ -16,7 +16,7 @@ User:
             comment: ''
             id: true
             generator:
-                strategy: IDENTITY
+                strategy: AUTO
     fields:
         email:
             type: string

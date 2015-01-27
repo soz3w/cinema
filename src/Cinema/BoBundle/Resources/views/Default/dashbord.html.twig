@@ -1,0 +1,124 @@
+{% extends "CinemaBoBundle::layout.html.twig" %}
+{% block content %}
+<div class="col-md-4" id="myCollapse1">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <a href="#itemContent9" data-parent="#myCollapse1" class="panel-title" data-toggle="collapse"><span class="glyphicon glyphicon-camera"></span> Film du jour</a>
+        </div>
+        <div id="itemContent9" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <ul class="list-group">
+                    {{ render(controller('CinemaBoBundle:Movies:getRandomMovie')) }}
+                </ul>
+            </div>
+        </div>
+        <div class="panel-heading">
+            <a href="#itemContent2"  data-parent="#myCollapse1" class="panel-title" data-toggle="collapse"><span class="glyphicon glyphicon-camera"></span> Meilleurs films à l'affiche</a>
+        </div>
+        <div id="itemContent2" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <ul class="list-group">
+                    {{ render(controller('CinemaBoBundle:Movies:getBestMovies')) }}
+                </ul>
+            </div>
+        </div>
+        <div class="panel-heading">
+            <a href="#itemContent5"  data-parent="#myCollapse1" class="panel-title" data-toggle="collapse"><span class="glyphicon glyphicon-camera"></span> Films les plus attendus</a>
+        </div>
+        <div id="itemContent5" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <ul class="list-group">
+                    {{ render(controller('CinemaBoBundle:Movies:getBestExpectedMovies')) }}
+                </ul>
+            </div>
+        </div>
+        <div class="panel-heading">
+            <a href="#itemContent8" data-parent="#myCollapse1" class="panel-title" data-toggle="collapse"><span class="glyphicon glyphicon-tasks"></span> Statistiques</a>
+        </div>
+        <div id="itemContent8" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <ul class="list-unstyled">
+                    {{ render(controller('CinemaBoBundle:Default:stats')) }}
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="col-md-4" id="myCollapse2">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <a href="#itemContent3" data-parent="#myCollapse2" class="panel-title" data-toggle="collapse"><span class="glyphicon glyphicon-user"></span> Meilleurs acteurs</a>
+        </div>
+        <div id="itemContent3" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <ul class="list-group">
+                    {{ render(controller('CinemaBoBundle:Actors:getBestActors')) }}
+                </ul>
+            </div>
+        </div>
+        <div class="panel-heading">
+            <a href="#itemContent4" data-parent="#myCollapse2" class="panel-title" data-toggle="collapse"><span class="glyphicon glyphicon-user"></span> Meilleurs Réalisateurs</a>
+        </div>
+        <div id="itemContent4" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <ul class="list-group">
+                    {{ render(controller('CinemaBoBundle:Directors:getBestDirectors')) }}
+                </ul>
+            </div>
+        </div>
+        <div class="panel-heading">
+            <a href="#itemContent6" data-parent="#myCollapse2" class="panel-title" data-toggle="collapse"><span class="glyphicon glyphicon-tag"></span> Tags</a>
+        </div>
+        <div id="itemContent6" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <ul class="list-group">
+                    {{ render(controller('CinemaBoBundle:Tags:getTags')) }}
+                </ul>
+            </div>
+        </div>
+        <div class="panel-heading">
+            <a href="#itemContent7" data-parent="#myCollapse2" class="panel-title" data-toggle="collapse"><span class="glyphicon glyphicon-tasks"></span> Catégories</a>
+        </div>
+        <div id="itemContent7" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <ul class="list-group">
+                    {{ render(controller('CinemaBoBundle:Categories:getCategoriesWithMovies')) }}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-8">
+    <div class="panel panel-success">
+
+        <div class="panel-heading">
+            <a href="#itemContent4" class="panel-title"><span class="glyphicon glyphicon-comment"></span> Commentaires</a>
+        </div>
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#comA" data-toggle="tab">Commentaires actives</a></li>
+            <li><a href="#comE" data-toggle="tab">Commentaires encours de validation</a></li>
+            <li><a href="#comI" data-toggle="tab">Commentaires inactifs</a></li>
+        </ul>
+        <div class="tab-content">
+            {{ render(controller('CinemaBoBundle:Comments:getComments')) }}
+        </div>
+    </div>
+</div>
+<div class="col-md-8">
+        <div class="panel panel-success">
+
+            <div class="panel-heading">
+                <a href="#itemContent4" class="panel-title"><span class="glyphicon glyphicon-dashboard"></span> Séances</a>
+            </div>
+
+            <div class="panel-body">
+                {{ render(controller('CinemaBoBundle:Sessions:getSessions')) }}
+            </div>
+        </div>
+</div>
+
+    {{ render(controller('CinemaBoBundle:Categories:getCategoriesMoviesChart')) }}
+
+{% endblock %}

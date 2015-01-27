@@ -1,3 +1,7 @@
+cinema_fo:
+    resource: "@CinemaFoBundle/Resources/config/routing.yml"
+    prefix:   /
+
 cinema_bo:
     resource: "@CinemaBoBundle/Resources/config/routing.yml"
     prefix:   /administration

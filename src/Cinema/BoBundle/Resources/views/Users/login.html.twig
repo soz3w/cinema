@@ -2,7 +2,7 @@
 {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
 {% block content %}
     {% if error %}
-        <div>{{ error.message }}</div>
+        <div>{{ error.message|trans({}, 'CinemaBoBundle') }}</div>
     {% endif %}
 <div class="col-sm-9 row well">
     <h3>coucou</h3>

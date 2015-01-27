@@ -101,8 +101,9 @@ class MoviesController extends Controller
 
     public function listMoviesAction()
     {
+
         //getting the entity manager
-        $em =$this->getDoctrine()->getManager();
+        //$em =$this->getDoctrine()->getManager();
 
         //getting the repository for movies
         /*$repoMovies=$em->getRepository("CinemaBoBundle:Movies");
@@ -113,8 +114,10 @@ class MoviesController extends Controller
             0
         );*/
 
-        $repoMovies=$em->getRepository("CinemaBoBundle:Movies");
-        $listMovies = $repoMovies->getMoviesCovered(6);
+//        $repoMovies=$em->getRepository("CinemaBoBundle:Movies");
+//        $listMovies = $repoMovies->getMoviesCovered(6);
+        $movie = $this->get('movie');
+        $listMovies = $movie->getCover();
 
         return $this->render('CinemaBoBundle:Movies:movies.html.twig',array("movies"=>$listMovies));
     }

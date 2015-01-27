@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle($this),
             new FOS\RestBundle\FOSRestBundle(),
+            new Cinema\FoBundle\CinemaFoBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

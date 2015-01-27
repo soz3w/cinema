@@ -17,7 +17,7 @@ class UserType extends AbstractType
         $builder
             ->add('email')
             ->add('username')
-            ->add('password')
+            ->add('password','password')
             ->add('roles', 'choice',
                 array(
                         'choices'  => array(
@@ -44,6 +44,8 @@ class UserType extends AbstractType
             'data_class' => 'Cinema\BoBundle\Entity\User'
         ));
     }
+
+
 
     /**
      * @return string

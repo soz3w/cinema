@@ -5,11 +5,17 @@ namespace Cinema\BoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
+
 /**
  * User
  *
  * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_8D93D64992FC23A8", columns={"username_canonical"}), @ORM\UniqueConstraint(name="UNIQ_8D93D649A0D96FBF", columns={"email_canonical"})})
  * @ORM\Entity(repositoryClass="Cinema\BoBundle\Repository\UserRepository")
+ * @ExclusionPolicy("all")
  */
 class User extends BaseUser
 {
@@ -20,6 +26,7 @@ class User extends BaseUser
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Expose
      */
     protected $id;
 
@@ -27,6 +34,7 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="ville", type="string", length=200, nullable=true)
+     * @Expose
      */
     protected $ville;
 
@@ -313,6 +321,7 @@ class User extends BaseUser
      * Get ville
      *
      * @return string
+     * @VirtualProperty
      */
     public function getVille()
     {

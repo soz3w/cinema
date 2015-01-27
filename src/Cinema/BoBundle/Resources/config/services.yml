@@ -15,3 +15,14 @@ services:
         public:     false
         tags:
             -       { name: security.voter }
+    bobundle_user.registration.form:
+            class: Cinema\BoBundle\Form\RegistrationFormType
+            tags:
+                - { name: form.type, alias: bobundle_user_registration }
+
+     #test service
+    movie:
+        class:  Cinema\BoBundle\Movie\Movie
+        arguments:
+            - 6
+            - @doctrine.orm.entity_manager

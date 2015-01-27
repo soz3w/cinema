@@ -52,14 +52,12 @@ class RegistrationController extends Controller
             return $event->getResponse();
         }
 
-        //$form = $formFactory->createForm();
-        $form = $this->createForm(new UserType(),$user,array(
-                "action"=>$this->generateUrl("cinema_bo_users_new"),
-                "method"=>"POST",
-                "attr"=>array("novalidate"=>"novalidate")
-
-            )
-        );
+        $form = $formFactory->createForm();
+//        $form = $formFactory->createForm(new UserType(),$user,array(
+//                "attr"=>array("novalidate"=>"novalidate")
+//
+//            )
+//        );
 
         $form->setData($user);
 
@@ -80,6 +78,10 @@ class RegistrationController extends Controller
 
             return $response;
         }
+
+        //test traduction
+        $this->getRequest()->setLocale('fr_FR');
+        $this->get('session')->set('_locale', 'fr_FR');
 
         return $this->render('CinemaBoBundle:Users:newUser.html.twig', array(
             'form' => $form->createView(),'titre'=>$titre

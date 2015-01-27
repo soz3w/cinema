@@ -1,0 +1,22 @@
+par fichier :
+  exemple :
+        secure:
+            messages:
+                aa:bb
+                cc:dd
+        auth:
+            bad credentials : mauvais droits
+            ...
+
+acces twig : secure.messages
+
+====================================================
+cache:clear : car les fichiers yml sont mis en cache
+
+===============================================
+avec routage:
+contact:
+    pattern:   /{_locale}/contact
+    defaults:  { _controller: AcmeDemoBundle:Contact:index, _locale: en }
+    requirements:
+        _locale: en|fr|de

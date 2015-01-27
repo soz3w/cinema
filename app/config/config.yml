@@ -5,7 +5,8 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      { fallback: "%locale%" }
+#    translator:      { fallback: fr }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -71,6 +72,7 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
 services:
     twig.extension.text:
        class: Twig_Extensions_Extension_Text
@@ -80,6 +82,10 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: Cinema\BoBundle\Entity\User
+    registration:
+        form:
+            type: bobundle_user_registration
+
 fos_rest:
     param_fetcher_listener: true
     body_listener: true
@@ -97,3 +103,6 @@ fos_rest:
         default_engine: twig
     routing_loader:
         default_format: json
+
+
+
