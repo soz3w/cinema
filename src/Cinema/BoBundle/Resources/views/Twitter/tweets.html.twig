@@ -1,0 +1,40 @@
+{% extends "CinemaBoBundle::layout.html.twig" %}
+{% block content %}
+<div class="col-sm-8">
+        <div class="row">
+                <div class="col-sm-5">
+                        <img class="thumbnail" src="{{ asset("bo/images/twitter.jpg") }}" alt="tweets"/>
+                </div>
+        </div>
+
+        <div class="row">
+                <div class="col-sm-6">
+                        {% for content in contents %}
+                                <p class="well">{{ content.text }} <a href="{{ path('cinema_bo_twitter_delete',{'id':content.id}) }}">
+                                                <span class="pull-right glyphicon glyphicon-trash"></span></a></p>
+                        {% endfor%}
+
+                </div>
+                <div class="col-sm-2">
+                        <form name="form" action="{{ path('cinema_bo_twitter_post') }}" method="post">
+                                <p>
+                                        compte:  <input name="compte" type="text"/>
+                                </p>
+
+                                <p>
+                                        message: <textarea name="message" id="" cols="30" rows="10"></textarea>
+
+                                </p>
+                                <p>
+                                        <input type="submit" />
+                                </p>
+
+
+                        </form>
+                </div>
+        </div>
+
+
+</div>
+
+{% endblock %}

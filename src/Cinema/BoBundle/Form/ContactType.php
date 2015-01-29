@@ -15,7 +15,7 @@ class ContactType extends AbstractType
     {
         $builder->add('recipient', "choice",
             array('label'=>"Destinataire",
-                'label_attr' => array('class' => 'col-md-3'),
+                'label_attr' => array('class' => ''),
                 'choices'=>['Administrateur','Commercial','Technicien'],
                 'attr'=>array('class' => 'form-control')
             ));
@@ -71,7 +71,10 @@ class ContactType extends AbstractType
                         array('label'=>"Message",
                               'label_attr' => array('class' => ''),
                               'attr'=>array('placeholder' => 'saisissez votre message',
-                                            'class' => 'form-control input-sm'
+                                            'class' => 'form-control input-sm ckeditor',
+                                            'id' => 'editeur',
+                                            'rows' => '20',
+                                            'cols' => '80',
                                             )
             ));
         $builder->add('send', "submit",

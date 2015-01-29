@@ -27,20 +27,22 @@ class ActorsController extends Controller
     }
     public function getActorsAction(Request $request)
     {
-        //getting the entity manager
-        $em =$this->getDoctrine()->getManager();
-        $repoActors=$em->getRepository("CinemaBoBundle:Actors");
-        $query=$repoActors->getActors(50);
-        $paginator  = $this->get('knp_paginator');
-        $pagination = $paginator->paginate(
-            $query,
-            $request->query->get('page', 1)/*page number*/,
-            10/*limit per page*/
-        );
-        //$listBestActors = $repoActors->getActors(50);
-        //var_dump($listBestActors);
-        //exit;
 
+//        $em =$this->getDoctrine()->getManager();
+//        $repoActors=$em->getRepository("CinemaBoBundle:Actors");
+//        $query=$repoActors->getActors(50);
+//        $paginator  = $this->get('knp_paginator');
+//        $pagination = $paginator->paginate(
+//            $query,
+//            $request->query->get('page', 1)/*page number*/,
+//            10/*limit per page*/
+//        );
+
+        //$pagination=$this->get('actor')->getActors($request);
+        $paginator=$this->get('mypaginator');
+        $paginator->setRepo('CinemaBoBundle:Actors');
+        $paginator->setRepomethod('getActors');
+        $pagination=$paginator->getList($request);
         return $this->render('CinemaBoBundle:Actors:actors.html.twig',array('pagination' => $pagination));
     }
 

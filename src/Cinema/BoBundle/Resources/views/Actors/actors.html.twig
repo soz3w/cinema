@@ -1,10 +1,10 @@
 {% extends "CinemaBoBundle::layout.html.twig" %}
 {% block content %}
     {# total items count #}
-    <div class="count">
-        {{ pagination.getTotalItemCount }}
-    </div>
-    <table>
+    <span class="badge badge-warning">
+        {{ pagination.getTotalItemCount }} Elements
+    </span>
+    <table class="table table-info table-responsive table-stripped">
         <tr>
             {# sorting of properties based on query components #}
             <th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>

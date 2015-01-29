@@ -4,21 +4,9 @@ cinema_bo:
 cinema_bo_contact:
     path:     /contact
     defaults: { _controller: CinemaBoBundle:Default:contact }
-cinema_bo_blank:
-    path:     /blank
-    defaults: { _controller: CinemaBoBundle:Default:blank }
-cinema_bo_MentionsLegales:
-    path:     /mentionslegales
-    defaults: { _controller: CinemaBoBundle:Static:mentionslegales }
-cinema_bo_cgu:
-    path:     /cgu
-    defaults: { _controller: CinemaBoBundle:Static:cgu }
-cinema_bo_MentionsLegales:
-    path:     /credits
-    defaults: { _controller: CinemaBoBundle:Static:credit }
-cinema_bo_Apropos:
-    path:     /apropos
-    defaults: { _controller: CinemaBoBundle:Static:apropos }
+cinema_bo_dashbord:
+    path:     /dashbord
+    defaults: { _controller: CinemaBoBundle:Default:dashbord }
 cinema_bo_test:
     path:     /test
     defaults: { _controller: CinemaBoBundle:Static:test }
@@ -104,3 +92,12 @@ cinema_bo_user_edit:
 cinema_bo_users:
     path:     /users
     defaults: { _controller: CinemaBoBundle:Users:getUsers}
+cinema_bo_twitter:
+    path:     /tweets
+    defaults: { _controller: CinemaBoBundle:Default:getTweets}
+cinema_bo_twitter_post:
+    path:     /tweets/post
+    defaults: { _controller: CinemaBoBundle:Default:postTweets}
+cinema_bo_twitter_delete:
+    path:     /tweets/delete/{id}
+    defaults: { _controller: CinemaBoBundle:Default:deleteTweet}

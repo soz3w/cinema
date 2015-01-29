@@ -1,9 +1,8 @@
 <?php
 
-namespace Cinema\BoBundle\Controller;
+namespace Cinema\FoBundle\Controller;
 
 use Cinema\BoBundle\Entity\Movies;
-use Doctrine\Common\Util\Debug;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -102,20 +101,6 @@ class MoviesController extends Controller
     public function listMoviesAction()
     {
 
-        //getting the entity manager
-        //$em =$this->getDoctrine()->getManager();
-
-        //getting the repository for movies
-        /*$repoMovies=$em->getRepository("CinemaBoBundle:Movies");
-        $listMovies = $repoMovies->findBy(
-            array('visible' => 1,'cover'=>1),
-            array('id' => 'desc'),
-            6,
-            0
-        );*/
-
-//        $repoMovies=$em->getRepository("CinemaBoBundle:Movies");
-//        $listMovies = $repoMovies->getMoviesCovered(6);
         $movie = $this->get('movie');
         $movie->setNb(6);
         $listMovies = $movie->getMoviesCovered();

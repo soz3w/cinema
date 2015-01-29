@@ -1,3 +1,106 @@
-cinema_fo_homepage:
-    path:     /hello/{name}
+cinema_fo:
+    path:     /
     defaults: { _controller: CinemaFoBundle:Default:index }
+cinema_fo_contact:
+    path:     /contact
+    defaults: { _controller: CinemaFoBundle:Default:contact }
+cinema_fo_blank:
+    path:     /blank
+    defaults: { _controller: CinemaFoBundle:Default:blank }
+cinema_fo_MentionsLegales:
+    path:     /mentionslegales
+    defaults: { _controller: CinemaFoBundle:Static:mentionslegales }
+cinema_fo_cgu:
+    path:     /cgu
+    defaults: { _controller: CinemaFoBundle:Static:cgu }
+cinema_fo_MentionsLegales:
+    path:     /credits
+    defaults: { _controller: CinemaFoBundle:Static:credit }
+cinema_fo_Apropos:
+    path:     /apropos
+    defaults: { _controller: CinemaFoBundle:Static:apropos }
+cinema_fo_test:
+    path:     /test
+    defaults: { _controller: CinemaFoBundle:Static:test }
+cinema_fo_movies:
+    path:     /movies
+    defaults: { _controller: CinemaFoBundle:Movies:listMovies }
+cinema_fo_movies_new:
+    path:     /movies/new
+    defaults: { _controller: CinemaFoBundle:Movies:newMovie }
+cinema_fo_movie_remove:
+    path:     /movie/remove/{id}
+    defaults: { _controller: CinemaFoBundle:Movies:removeMovie }
+    requirements:
+            id: \d+
+cinema_fo_movie_edit:
+    path:     /movie/edit/{id}
+    defaults: { _controller: CinemaFoBundle:Movies:editMovie }
+    requirements:
+            id: \d+
+cinema_fo_movies_best:
+    path:     /bestmovies
+    defaults: { _controller: CinemaFoBundle:Movies:getBestMovies }
+cinema_fo_movies_bestExpected:
+    path:     /bestexpectedmovies
+    defaults: { _controller: CinemaFoBundle:Movies:getBestExpectedMovies }
+cinema_fo_movie:
+    path:     /movie/{id}
+    defaults: { _controller: CinemaFoBundle:Movies:getMovie }
+    requirements:
+            id: \d+
+cinema_fo_movies_category:
+    path:     /movies/category/{catId}
+    defaults: { _controller: CinemaFoBundle:Movies:listMoviesByCategory }
+    requirements:
+            catId: \d+
+cinema_fo_categories:
+    path:     /categories
+    defaults: { _controller: CinemaFoBundle:Categories:getCategories }
+cinema_fo_movies_tag:
+    path:     /movies/tag/{tagId}
+    defaults: { _controller: CinemaFoBundle:Movies:listMoviesByTag }
+    requirements:
+            catId: \d+
+cinema_fo_Tags:
+    path:     /tags
+    defaults: { _controller: CinemaFoBundle:Categories:getTags}
+cinema_fo_actor:
+    path:     /actor/{id}
+    defaults: { _controller: CinemaFoBundle:Actors:getActor}
+    requirements:
+            id: \d+
+cinema_fo_Actors:
+    path:     /actors
+    defaults: { _controller: CinemaFoBundle:Actors:getActors}
+cinema_fo_director:
+    path:     /director/{id}
+    defaults: { _controller: CinemaFoBundle:Directors:getDirector}
+    requirements:
+            id: \d+
+cinema_fo_Directors:
+    path:     /directors
+    defaults: { _controller: CinemaFoBundle:Directors:getDirectors}
+cinema_fo_Seances:
+    path:     /seances
+    defaults: { _controller: CinemaFoBundle:Seances:getSeances}
+cinema_fo_Cinemas:
+    path:     /cinemas
+    defaults: { _controller: CinemaFoBundle:Cinemas:getCinemas}
+cinema_fo_Comments:
+    path:     /comments
+    defaults: { _controller: CinemaFoBundle:Cinemas:getComments}
+cinema_fo_Sessions:
+    path:     /sessions
+    defaults: { _controller: CinemaFoBundle:Sessions:getSessions}
+cinema_fo_users_new:
+    path:     /users/new
+    defaults: { _controller: CinemaFoBundle:Registration:register}
+cinema_fo_user_edit:
+    path:     /users/edit/{id}
+    defaults: { _controller: CinemaFoBundle:Users:editUser }
+    requirements:
+            id: \d+
+cinema_fo_users:
+    path:     /users
+    defaults: { _controller: CinemaFoBundle:Users:getUsers}

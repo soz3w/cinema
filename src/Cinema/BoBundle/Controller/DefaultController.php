@@ -5,11 +5,8 @@ namespace Cinema\BoBundle\Controller;
 use Cinema\BoBundle\Entity\Movies;
 use Cinema\BoBundle\Entity\Categories;
 use Cinema\BoBundle\Entity\Tags;
-use Doctrine\Common\Util\Debug;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Cinema\BoBundle\Form\ContactType;
 
 class DefaultController extends Controller
 {
@@ -18,6 +15,15 @@ class DefaultController extends Controller
        // return new RedirectResponse($this->generateUrl("cinema_bo_movies"));
         return $this->render('CinemaBoBundle:Default:index.html.twig');
     }
+
+
+    public function dashbordAction()
+    {
+        // return new RedirectResponse($this->generateUrl("cinema_bo_movies"));
+        return $this->render('CinemaBoBundle:Default:dashbord.html.twig');
+    }
+
+
     public function contactAction(Request $request)
     {
         /*if ($request->getMethod()=="POST")
@@ -41,6 +47,8 @@ class DefaultController extends Controller
 
         return $this->render('CinemaBoBundle:Default:contact.html.twig',array("form"=>$form->CreateView()));
     }
+
+
     public function statsAction()
     {
         $em =$this->getDoctrine()->getManager();
@@ -61,6 +69,7 @@ class DefaultController extends Controller
             array("nbMovies"=>$nbMovies,"nbDirectors"=>$nbDirectors,
                 "nbCategories"=>$nbCategories,"nbActors"=>$nbActors));
     }
+
 
     public function blankAction()
     {
@@ -109,5 +118,34 @@ class DefaultController extends Controller
 
 
         return $this->render('CinemaBoBundle:Default:blank.html.twig');
+    }
+
+    ///twitter
+    public function getTweetsAction(){
+
+        $tweeter = $this->get('twitter');
+        $tweeter->getTweets();
+        $contents =$tweeter->getTweets();
+        return $this->render('CinemaBoBundle:Twitter:tweets.html.twig',array('contents'=>$contents));
+    }
+    public function postTweetsAction(Request $request){
+        $data = $request->request->all();
+
+        $compte = $data['compte'];
+        $message = $data['message'];
+
+
+        $tweeter = $this->get('twitter');
+        $tweeter->setCompte($compte);
+        $tweeter->setMessage($message);
+        $tweeter->postTweet();
+        $contents =$tweeter->getTweets();
+        return $this->render('CinemaBoBundle:Twitter:tweets.html.twig',array('contents'=>$contents));
+    }
+    public function deleteTweetAction(Request $request,$id){
+        $tweeter = $this->get('twitter');
+        $tweeter->deleteTweet($id);
+        $contents =$tweeter->getTweets();
+        return $this->render('CinemaBoBundle:Twitter:tweets.html.twig',array('contents'=>$contents));
     }
 }

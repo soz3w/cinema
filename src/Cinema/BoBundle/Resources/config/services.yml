@@ -20,9 +20,33 @@ services:
             tags:
                 - { name: form.type, alias: bobundle_user_registration }
 
-     #test service
+     #Entity repo services
     movie:
-        class:  Cinema\BoBundle\Movie\Movie
+        class:  Cinema\BoBundle\Services\Movie
         arguments:
             - 6
             - @doctrine.orm.entity_manager
+    actor:
+            class:  Cinema\BoBundle\Services\Actor
+            arguments:
+                - 50
+                - @doctrine.orm.entity_manager
+                - @knp_paginator
+            tags:
+                - { name: knp_paginator.injectable }
+    mypaginator:
+                class:  Cinema\BoBundle\Services\EntityRepoPaginate
+                arguments:
+                    - 50
+                    - @doctrine.orm.entity_manager
+                    - @knp_paginator
+                    - CinemaBoBundle:Actors
+                    - getList
+                tags:
+                    - { name: knp_paginator.injectable }
+    twitter:
+            class:  Cinema\BoBundle\Services\Twitter
+            arguments:
+                - 20
+                - sadinafall
+                - test Api with protocole oAuth

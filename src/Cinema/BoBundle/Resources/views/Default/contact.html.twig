@@ -1,13 +1,18 @@
 {% extends "CinemaBoBundle::layout.html.twig" %}
-{% form_theme form 'CinemaBoBundle:Form:fields.html.twig' %}
+{# form_theme form 'CinemaBoBundle:Form:fields.html.twig' #}
+{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
 {% block content %}
     <h1>Contact</h1>
-    <div class="col-md-8 row">
+    <div class="col-md-10 row">
         <div class="row">
             {{ form(form) }}
         </div>
     </div>
 
 
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
 {% endblock %}
 
