@@ -1,6 +1,58 @@
 Accueil|Films|Categories|Acteurs|Realisateurs|Seances|Cinema
 
 getResult
+getArrayResult
+getSingleResult
 getSingleScalarResult
 getOneorNullResult
 getOneResult
+
+
+translation
+crud
+events
+validation group (validator, not only isvalid() )
+annotation for form
+swiftmail
+doctrine fixtures with symfony
+profiler
+
+
+conclusions:
+
+R->C->V
+
+R->R
+
+C--->{
+	-vue
+	-redirect
+	-exception(404,500,..)
+	-forward
+}
+
+C->M
+	
+doctrine: see 
+			- the AST, create your own functions
+
+			- le bundles d'extension de doctrine
+
+			- transformers (id to object)
+
+session inside controller, easy to use
+
+fosuserbundle
+
+->granted dans controller
+is_granted view
+
+dump: generate translation
+twig :lint  compile twig
+
+prod:
+change parameters.yml
+droits pour app/cache
+droits pour app/log
+server to app.php/ del app-dev
+del config.php

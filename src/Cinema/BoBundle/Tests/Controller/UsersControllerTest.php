@@ -3,20 +3,17 @@
 namespace Cinema\BoBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Cinema\BoBundle\Entity\User;
-use Cinema\BoBundle\Form\UserType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\SecurityContext;
-use Cinema\BoBundle\Form\LoginType;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+
 
 class UsersControllerTest extends WebTestCase
 {
+
+
     public function testSignin()
     {
         $client = static::createClient();
+
 
         $crawler = $client->request('GET', '/login');
 
@@ -25,17 +22,46 @@ class UsersControllerTest extends WebTestCase
         $this->assertTrue($crawler->filter('html:contains("Se souvenir de moi")')->count() > 0);
         $this->assertTrue($crawler->filter('html:contains("login")')->count() > 0);
 
-// définit certaines valeurs
-        $form = $crawler->selectButton('button')->form();
+
+        $form = $crawler->selectButton('login')->form();
+
+        /********************************
+         * user ko
+         **********************************/
+
+        //bad credentials
+        $form['_username'] = 'testuser1';
+        $form['_password'] = 'test';
+        $crawler = $client->submit($form);
+
+        $this->assertTrue($client->getResponse()->isRedirect());
+        $this->assertTrue($client->getResponse()->isRedirect('http://localhost/login'));
+
+        $crawler = $client->followRedirect();
+        $this->assertTrue($crawler->filter('html:contains("Bad credentials.")')->count() > 0);
+
+        //var_dump($crawler->filter('body h1')->text());
+        //var_dump($client->getRequest()->getUri());
+
+
+
+        /**********************************
+         * User ok
+         *******************************/
         $form['_username'] = 'testuser';
         $form['_password'] = 'test';
-
-// soumet le formulaire
         $crawler = $client->submit($form);
-        $client->followRedirect();
-        var_dump($crawler);
 
-        $this->assertTrue($crawler->filter('html:contains("Bienvenue sur le site cinema")')->count() > 0);
+        $this->assertTrue($client->getResponse()->isRedirect());
+        $this->assertTrue($client->getResponse()->isRedirect('http://localhost/'));
+
+        $crawler = $client->followRedirect();
+        $this->assertTrue($crawler->filter('html:contains("Bienvenue")')->count() > 0);
+
+
+        return $client;
+
+
 
     }
 

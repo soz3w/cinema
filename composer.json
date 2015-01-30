@@ -22,7 +22,8 @@
         "knplabs/knp-paginator-bundle": "~2.4",
         "friendsofsymfony/rest-bundle": "~1.4",
         "jms/serializer-bundle": "~0.13",
-        "Abraham/TwitterOAuth": "dev-master"
+        "Abraham/TwitterOAuth": "dev-master",
+        "doctrine/doctrine-fixtures-bundle": "2.2.*"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

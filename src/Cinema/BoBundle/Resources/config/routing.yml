@@ -101,3 +101,6 @@ cinema_bo_twitter_post:
 cinema_bo_twitter_delete:
     path:     /tweets/delete/{id}
     defaults: { _controller: CinemaBoBundle:Default:deleteTweet}
+cinema_bo_sendmail:
+    path:     /sendmail/{name}
+    defaults: { _controller: CinemaBoBundle:Default:sendMail}

@@ -148,4 +148,16 @@ class DefaultController extends Controller
         $contents =$tweeter->getTweets();
         return $this->render('CinemaBoBundle:Twitter:tweets.html.twig',array('contents'=>$contents));
     }
+
+    public function sendMailAction($name){
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Hello Email')
+            ->setFrom('ecommercekohana@gmail.com')
+            ->setTo('ecommercekohana@gmail.com')
+            ->setBody($this->renderView('CinemaBoBundle:Default:blank.txt.twig',array('name' => $name)))
+            //->setBody('Hello from symfony cinema')
+        ;
+        $this->get('mailer')->send($message);
+        return $this->render('CinemaBoBundle:Default:blank.txt.twig');
+    }
 }
