@@ -26,14 +26,15 @@ class UsersControllerTest extends WebTestCase
         $this->assertTrue($crawler->filter('html:contains("login")')->count() > 0);
 
 // définit certaines valeurs
-        $form = $crawler->selectButton('submit')->form();
+        $form = $crawler->selectButton('button')->form();
         $form['_username'] = 'testuser';
         $form['_password'] = 'test';
 
 // soumet le formulaire
         $crawler = $client->submit($form);
+        $client->followRedirect();
+        var_dump($crawler);
 
-        $crawler = $client->followRedirect();
         $this->assertTrue($crawler->filter('html:contains("Bienvenue sur le site cinema")')->count() > 0);
 
     }
